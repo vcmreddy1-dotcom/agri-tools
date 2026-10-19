@@ -1,0 +1,59 @@
+@import "tailwindcss";
+
+@theme {
+  --color-agri-950: #091a0e;
+  --color-agri-900: #11341c;
+  --color-agri-800: #174826;
+  --color-agri-700: #1f6133;
+  --color-agri-600: #287a41;
+  --color-agri-500: #329651;
+  --color-agri-100: #e5f4eb;
+  --color-agri-50: #f1f8f3;
+
+  --color-gold-700: #9d7528;
+  --color-gold-600: #b88d3b;
+  --color-gold-500: #c5a059;
+  --color-gold-400: #d8b672;
+  --color-gold-100: #fbf6eb;
+  --color-gold-50: #fdfaf4;
+
+  --color-ivory-50: #fefdfb;
+  --color-ivory-100: #fcfaf5;
+  --color-ivory-200: #f6f2e8;
+  --color-earth-100: #f3f0e8;
+  --color-earth-200: #e7e2d5;
+  --color-earth-500: #7d7565;
+  --color-earth-800: #3a362d;
+  --color-earth-900: #23201b;
+}
+
+:root {
+  --background: #fcfaf5;
+  --foreground: #1c1c1c;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Custom scrollbar for modern industrial feel */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f4f1ea;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c5a059;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #174826;
+}
