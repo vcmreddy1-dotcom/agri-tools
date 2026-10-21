@@ -14,6 +14,8 @@ import {
 } from "lucide-react";
 import { prisma } from "@/lib/db";
 
+export const dynamic = "force-dynamic";
+
 export default async function AdminDashboardOverview() {
   const [
     totalPublished,
