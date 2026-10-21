@@ -44,31 +44,38 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
   ];
 
-  // Fetch dynamic categories
-  const categories = await prisma.category.findMany({
-    where: { isActive: true },
-    select: { slug: true, updatedAt: true },
-  });
+  let categoryRoutes: MetadataRoute.Sitemap = [];
+  let productRoutes: MetadataRoute.Sitemap = [];
 
-  const categoryRoutes: MetadataRoute.Sitemap = categories.map((cat) => ({
-    url: `${baseUrl}/products/${cat.slug}`,
-    lastModified: cat.updatedAt,
-    changeFrequency: "weekly",
-    priority: 0.8,
-  }));
+  try {
+    // Fetch dynamic categories
+    const categories = await prisma.category.findMany({
+      where: { isActive: true },
+      select: { slug: true, updatedAt: true },
+    });
 
-  // Fetch dynamic products
-  const products = await prisma.product.findMany({
-    where: { published: true },
-    select: { slug: true, updatedAt: true },
-  });
+    categoryRoutes = categories.map((cat) => ({
+      url: `${baseUrl}/products/${cat.slug}`,
+      lastModified: cat.updatedAt,
+      changeFrequency: "weekly",
+      priority: 0.8,
+    }));
 
-  const productRoutes: MetadataRoute.Sitemap = products.map((prod) => ({
-    url: `${baseUrl}/products/${prod.slug}`,
-    lastModified: prod.updatedAt,
-    changeFrequency: "weekly",
-    priority: 0.85,
-  }));
+    // Fetch dynamic products
+    const products = await prisma.product.findMany({
+      where: { published: true },
+      select: { slug: true, updatedAt: true },
+    });
+
+    productRoutes = products.map((prod) => ({
+      url: `${baseUrl}/products/${prod.slug}`,
+      lastModified: prod.updatedAt,
+      changeFrequency: "weekly",
+      priority: 0.85,
+    }));
+  } catch (error) {
+    console.warn("Sitemap: Database unreachable during build, falling back to static routes.", error);
+  }
 
   return [...staticRoutes, ...categoryRoutes, ...productRoutes];
 }
