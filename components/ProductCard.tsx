@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { MessageSquare, ArrowRight, ShieldCheck, CheckCircle2, Clock, AlertCircle } from "lucide-react";
-import { getProductWhatsAppUrl } from "@/lib/whatsapp";
+import { getProductWhatsAppUrl, BUSINESS_INFO } from "@/lib/whatsapp";
 import EnquiryModal from "@/components/EnquiryModal";
 
 export interface ProductCardProps {
@@ -75,10 +75,7 @@ export default function ProductCard({ product }: ProductCardProps) {
     }
   };
 
-  const productUrl =
-    typeof window !== "undefined"
-      ? `${window.location.origin}/products/${product.slug}`
-      : `/products/${product.slug}`;
+  const productUrl = `${BUSINESS_INFO.siteUrl}/products/${product.slug}`;
 
   const whatsappUrl = getProductWhatsAppUrl({
     productName: product.name,
@@ -182,19 +179,19 @@ export default function ProductCard({ product }: ProductCardProps) {
             <div className="grid grid-cols-2 gap-2">
               <Link
                 href={`/products/${product.slug}`}
-                className="flex items-center justify-center gap-1.5 px-3 py-2 bg-stone-100 hover:bg-stone-200 text-stone-800 text-xs font-semibold rounded-xl transition-colors"
+                className="flex items-center justify-center gap-1 sm:gap-1.5 px-2.5 sm:px-3 py-2 bg-stone-100 hover:bg-stone-200 text-stone-800 text-[11px] sm:text-xs font-semibold rounded-xl transition-colors"
               >
                 <span>View Details</span>
-                <ArrowRight className="w-3.5 h-3.5 text-stone-500" />
+                <ArrowRight className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-stone-500" />
               </Link>
 
               <a
                 href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-1.5 px-3 py-2 bg-[#11341c] hover:bg-[#1f6133] text-white text-xs font-bold rounded-xl shadow-xs transition-colors"
+                className="flex items-center justify-center gap-1 sm:gap-1.5 px-2.5 sm:px-3 py-2 bg-[#11341c] hover:bg-[#1f6133] text-white text-[11px] sm:text-xs font-bold rounded-xl shadow-xs transition-colors"
               >
-                <MessageSquare className="w-3.5 h-3.5 text-[#d4b672]" />
+                <MessageSquare className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#d4b672]" />
                 <span>WhatsApp</span>
               </a>
             </div>

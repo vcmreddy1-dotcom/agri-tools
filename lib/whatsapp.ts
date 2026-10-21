@@ -1,4 +1,6 @@
 const WHATSAPP_NUMBER = "919666039444";
+export const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL || "https://prakashagritools.com";
 
 export interface WhatsAppProductParams {
   productName: string;
@@ -33,6 +35,14 @@ export const BUSINESS_INFO = {
   whatsappNumber: WHATSAPP_NUMBER,
   location: "LB Nagar, Hyderabad, Telangana, India",
   establishedYear: "2009",
+  siteUrl: SITE_URL,
+  logoUrl: "/logo.png",
+  logoIconUrl: "/logo-icon.png",
+  social: {
+    facebook: "https://www.facebook.com/share/1CU72i7TVS/?mibextid=wwXIfr",
+    instagram: "https://www.instagram.com/eruvaka_agriculture_solutions?obrf=MTR6dmpqYjlxOWQ4YQ%3D%3D&utm_source=qr",
+    instagramHandle: "@eruvaka_agriculture_solutions",
+  },
   categories: [
     { name: "Agricultural Implements", slug: "agricultural-implements" },
     { name: "Spraying Equipment", slug: "spraying-equipment" },

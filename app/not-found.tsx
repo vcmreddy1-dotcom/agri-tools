@@ -1,14 +1,21 @@
 import React from "react";
 import Link from "next/link";
-import { Tractor, ArrowLeft, Home, Search, MessageSquare } from "lucide-react";
+import Image from "next/image";
+import { ArrowLeft, Home, Search, MessageSquare } from "lucide-react";
 import { getGeneralWhatsAppUrl } from "@/lib/whatsapp";
 
 export default function NotFound() {
   return (
     <div className="min-h-[70vh] flex items-center justify-center px-4 py-16">
       <div className="max-w-md w-full bg-white rounded-3xl p-8 sm:p-10 border border-stone-200/90 shadow-xl text-center space-y-6">
-        <div className="w-16 h-16 rounded-2xl bg-emerald-50 text-[#11341c] border border-emerald-100 flex items-center justify-center mx-auto">
-          <Tractor className="w-8 h-8 text-[#11341c]" />
+        <div className="w-16 h-16 rounded-2xl bg-white p-2 border border-stone-200 shadow-sm flex items-center justify-center mx-auto">
+          <Image
+            src="/logo-icon.png"
+            alt="Prakash Agri Tools Emblem"
+            width={48}
+            height={48}
+            className="w-full h-full object-contain"
+          />
         </div>
 
         <div className="space-y-2">

@@ -78,10 +78,7 @@ export default function ProductDetailView({
 
   const currentImage = images[selectedImageIndex] || images[0];
 
-  const productUrl =
-    typeof window !== "undefined"
-      ? window.location.href
-      : `https://prakashagritools.com/products/${product.slug}`;
+  const productUrl = `${BUSINESS_INFO.siteUrl}/products/${product.slug}`;
 
   const whatsappUrl = getProductWhatsAppUrl({
     productName: product.name,
@@ -90,8 +87,10 @@ export default function ProductDetailView({
   });
 
   const handleShare = () => {
+    const currentShareUrl =
+      typeof window !== "undefined" ? window.location.href : productUrl;
     if (navigator.clipboard) {
-      navigator.clipboard.writeText(productUrl);
+      navigator.clipboard.writeText(currentShareUrl);
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     }
@@ -233,23 +232,23 @@ export default function ProductDetailView({
 
           {/* Action CTAs */}
           <div className="space-y-3 pt-2">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div className="grid grid-cols-2 gap-2 sm:gap-3">
               <a
                 href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 bg-[#11341c] hover:bg-[#1f6133] text-white py-3.5 px-6 rounded-2xl font-bold text-sm shadow-md transition-colors"
+                className="flex items-center justify-center gap-1.5 sm:gap-2 bg-[#11341c] hover:bg-[#1f6133] text-white py-2.5 sm:py-3.5 px-3 sm:px-6 rounded-xl sm:rounded-2xl font-bold text-xs sm:text-sm shadow-md transition-colors"
               >
-                <MessageSquare className="w-5 h-5 text-[#d4b672]" />
-                <span>Enquire on WhatsApp</span>
+                <MessageSquare className="w-4 h-4 text-[#d4b672]" />
+                <span>WhatsApp Price</span>
               </a>
 
               <button
                 onClick={() => setIsModalOpen(true)}
-                className="flex items-center justify-center gap-2 bg-[#c5a059] hover:bg-[#d4b472] text-[#091a0e] py-3.5 px-6 rounded-2xl font-bold text-sm shadow-sm transition-colors"
+                className="flex items-center justify-center gap-1.5 sm:gap-2 bg-[#c5a059] hover:bg-[#d4b472] text-[#091a0e] py-2.5 sm:py-3.5 px-3 sm:px-6 rounded-xl sm:rounded-2xl font-bold text-xs sm:text-sm shadow-sm transition-colors"
               >
-                <Send className="w-4 h-4" />
-                <span>Submit Web Enquiry</span>
+                <Send className="w-3.5 h-3.5" />
+                <span>Web Enquiry</span>
               </button>
             </div>
 

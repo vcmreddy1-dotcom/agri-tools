@@ -2,9 +2,11 @@
 
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Tractor, Phone, MapPin, MessageSquare, ShieldCheck, Mail } from "lucide-react";
 import { BUSINESS_INFO, getGeneralWhatsAppUrl } from "@/lib/whatsapp";
+import { FacebookIcon, InstagramIcon } from "@/components/icons/SocialIcons";
 
 export default function Footer() {
   const pathname = usePathname();
@@ -25,35 +27,41 @@ export default function Footer() {
       <div className="border-b border-stone-800/80 bg-[#11341c]/60 py-8 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-xl bg-[#174826] border border-[#287a41]/40 flex items-center justify-center text-[#d4b672]">
-              <Tractor className="w-7 h-7" />
+            <div className="w-12 h-12 rounded-xl bg-white p-1.5 flex items-center justify-center shrink-0 shadow-md border border-stone-200">
+              <Image
+                src="/logo-icon.png"
+                alt="Prakash Agri Tools Emblem"
+                width={48}
+                height={48}
+                className="w-full h-full object-contain"
+              />
             </div>
             <div>
               <h3 className="text-lg font-bold text-white font-serif">
-                Prakash Agri Tools
+                Prakash <span className="text-[#f58220]">Agri Tools</span>
               </h3>
               <p className="text-xs text-stone-400">
-                Reliable Agricultural Machinery & Equipment Showroom • Established 2009
+                Powering Agriculture • Agricultural Machinery & Spares Showroom • Estd. 2009
               </p>
             </div>
           </div>
 
-          <div className="flex flex-wrap items-center gap-3">
+          <div className="flex flex-wrap items-center gap-2 sm:gap-3 w-full sm:w-auto">
             <a
               href={`tel:${BUSINESS_INFO.phoneRaw}`}
-              className="inline-flex items-center gap-2 bg-stone-800/90 hover:bg-stone-700 text-stone-200 px-4 py-2.5 rounded-xl text-sm font-semibold transition-colors border border-stone-700"
+              className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-1.5 sm:gap-2 bg-stone-800/90 hover:bg-stone-700 text-stone-200 px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-colors border border-stone-700"
             >
-              <Phone className="w-4 h-4 text-[#c5a059]" />
-              {BUSINESS_INFO.phoneDisplay}
+              <Phone className="w-3.5 h-3.5 text-[#c5a059]" />
+              <span>{BUSINESS_INFO.phoneDisplay}</span>
             </a>
             <a
               href={getGeneralWhatsAppUrl()}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-[#287a41] hover:bg-[#329651] text-white px-5 py-2.5 rounded-xl text-sm font-bold shadow-md transition-colors"
+              className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-1.5 sm:gap-2 bg-[#287a41] hover:bg-[#329651] text-white px-3 sm:px-5 py-2 sm:py-2.5 rounded-xl text-xs sm:text-sm font-bold shadow-md transition-colors"
             >
-              <MessageSquare className="w-4 h-4 text-emerald-200" />
-              WhatsApp Price Enquiry
+              <MessageSquare className="w-3.5 h-3.5 text-emerald-200" />
+              <span>WhatsApp Enquiry</span>
             </a>
           </div>
         </div>
@@ -64,9 +72,18 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-12">
           {/* Col 1: About */}
           <div className="lg:col-span-2 space-y-4">
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-white p-1 flex items-center justify-center shrink-0 shadow-sm border border-stone-200">
+                <Image
+                  src="/logo-icon.png"
+                  alt="Prakash Agri Tools"
+                  width={36}
+                  height={36}
+                  className="w-full h-full object-contain"
+                />
+              </div>
               <span className="text-xl font-bold tracking-tight text-white font-serif">
-                PRAKASH AGRI TOOLS
+                PRAKASH <span className="text-[#f58220]">AGRI TOOLS</span>
               </span>
             </div>
             <p className="text-sm text-stone-400 leading-relaxed max-w-md">
@@ -84,6 +101,35 @@ export default function Footer() {
               <div className="flex items-center gap-2">
                 <ShieldCheck className="w-4 h-4 text-[#c5a059] shrink-0" />
                 <span>Registered Agricultural Equipment Supplier</span>
+              </div>
+            </div>
+
+            {/* Social Links */}
+            <div className="pt-3">
+              <span className="block text-xs font-semibold text-stone-300 uppercase tracking-wider mb-2">
+                Connect With Us
+              </span>
+              <div className="flex items-center gap-2.5 flex-wrap">
+                <a
+                  href={BUSINESS_INFO.social.facebook}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-stone-800/90 hover:bg-[#1877F2] text-stone-300 hover:text-white text-xs font-medium border border-stone-700/80 transition-all group"
+                  aria-label="Facebook Page"
+                >
+                  <FacebookIcon className="w-4 h-4 text-[#1877F2] group-hover:text-white transition-colors" />
+                  <span>Facebook</span>
+                </a>
+                <a
+                  href={BUSINESS_INFO.social.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-stone-800/90 hover:bg-gradient-to-r hover:from-[#f09433] hover:via-[#dc2743] hover:to-[#bc1888] text-stone-300 hover:text-white text-xs font-medium border border-stone-700/80 transition-all group"
+                  aria-label="Instagram Profile"
+                >
+                  <InstagramIcon className="w-4 h-4 text-[#E1306C] group-hover:text-white transition-colors" />
+                  <span>Instagram</span>
+                </a>
               </div>
             </div>
           </div>
@@ -228,14 +274,34 @@ export default function Footer() {
           <p>
             © {currentYear} Prakash Agri Tools, LB Nagar, Hyderabad. All rights reserved.
           </p>
-          <div className="flex items-center gap-6">
+          <div className="flex items-center gap-5">
+            <div className="flex items-center gap-3 pr-2 border-r border-stone-800">
+              <a
+                href={BUSINESS_INFO.social.facebook}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-stone-400 hover:text-[#1877F2] transition-colors"
+                aria-label="Facebook"
+              >
+                <FacebookIcon className="w-4 h-4" />
+              </a>
+              <a
+                href={BUSINESS_INFO.social.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-stone-400 hover:text-[#E1306C] transition-colors"
+                aria-label="Instagram"
+              >
+                <InstagramIcon className="w-4 h-4" />
+              </a>
+            </div>
             <Link href="/privacy-policy" className="hover:underline">
               Privacy Policy
             </Link>
             <Link href="/terms" className="hover:underline">
               Terms & Conditions
             </Link>
-            <span>Telangana, India</span>
+            <span className="hidden sm:inline">Telangana, India</span>
           </div>
         </div>
       </div>

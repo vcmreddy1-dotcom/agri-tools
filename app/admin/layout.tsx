@@ -2,6 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import {
   Tractor,
@@ -52,14 +53,20 @@ export default function AdminLayout({
           {/* Logo Header */}
           <div className="p-6 border-b border-[#1b4d2e]">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-[#174826] flex items-center justify-center text-[#d4b672] shadow-sm">
-                <Tractor className="w-6 h-6" />
+              <div className="w-10 h-10 rounded-xl bg-white p-1 flex items-center justify-center shrink-0 shadow-sm border border-stone-200">
+                <Image
+                  src="/logo-icon.png"
+                  alt="Prakash Agri Tools"
+                  width={36}
+                  height={36}
+                  className="w-full h-full object-contain"
+                />
               </div>
               <div>
-                <span className="block font-black text-white text-base font-serif tracking-tight">
-                  PRAKASH AGRI
+                <span className="block font-black text-white text-base font-serif tracking-tight leading-none">
+                  PRAKASH <span className="text-[#f58220]">AGRI</span>
                 </span>
-                <span className="block text-[10px] text-emerald-300 uppercase tracking-wider font-semibold">
+                <span className="block text-[10px] text-emerald-300 uppercase tracking-wider font-semibold mt-1">
                   Catalogue Admin
                 </span>
               </div>

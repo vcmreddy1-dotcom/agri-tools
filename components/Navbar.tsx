@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import {
   Phone,
@@ -16,6 +17,7 @@ import {
   Sparkles,
 } from "lucide-react";
 import { BUSINESS_INFO, getGeneralWhatsAppUrl } from "@/lib/whatsapp";
+import { FacebookIcon, InstagramIcon } from "@/components/icons/SocialIcons";
 
 interface CategoryNavItem {
   name: string;
@@ -104,37 +106,55 @@ export default function Navbar() {
   return (
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-stone-200/80 shadow-xs">
       {/* Top Bar */}
-      <div className="bg-[#11341c] text-stone-100 text-xs py-2 px-4 border-b border-[#1b4d2e]">
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
-          <div className="flex items-center gap-4 flex-wrap justify-center sm:justify-start">
-            <span className="flex items-center gap-1.5 font-medium text-emerald-300">
-              <Sparkles className="w-3.5 h-3.5 text-[#c5a059]" />
-              Est. {BUSINESS_INFO.establishedYear} • Hyderabad, Telangana
+      <div className="bg-[#11341c] text-stone-100 py-1.5 sm:py-2 px-3 sm:px-4 border-b border-[#1b4d2e]">
+        <div className="max-w-7xl mx-auto flex flex-row justify-between items-center gap-2">
+          <div className="flex items-center gap-2 sm:gap-4 text-[11px] sm:text-xs">
+            <span className="flex items-center gap-1 font-medium text-emerald-300">
+              <Sparkles className="w-3 h-3 text-[#c5a059] shrink-0" />
+              <span>Estd. {BUSINESS_INFO.establishedYear}</span>
+              <span className="hidden sm:inline">• Hyderabad, Telangana</span>
             </span>
-            <span className="hidden md:inline-block text-stone-400">|</span>
+            <span className="text-stone-500">|</span>
             <a
               href={`tel:${BUSINESS_INFO.phoneRaw}`}
-              className="flex items-center gap-1.5 hover:text-emerald-300 transition-colors"
+              className="flex items-center gap-1 hover:text-emerald-300 transition-colors font-semibold"
             >
-              <Phone className="w-3.5 h-3.5 text-[#c5a059]" />
-              {BUSINESS_INFO.phoneDisplay}
+              <Phone className="w-3 h-3 text-[#c5a059] shrink-0" />
+              <span>{BUSINESS_INFO.phoneDisplay}</span>
             </a>
-            <span className="hidden md:inline-block text-stone-400">|</span>
-            <span className="hidden sm:flex items-center gap-1 text-stone-300">
-              <MapPin className="w-3.5 h-3.5 text-[#c5a059]" />
-              LB Nagar, Hyderabad
-            </span>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3">
+            <div className="hidden sm:flex items-center gap-2 pr-2 border-r border-[#1b4d2e]">
+              <a
+                href={BUSINESS_INFO.social.facebook}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-stone-300 hover:text-white transition-colors p-0.5"
+                title="Follow us on Facebook"
+                aria-label="Facebook"
+              >
+                <FacebookIcon className="w-3.5 h-3.5" />
+              </a>
+              <a
+                href={BUSINESS_INFO.social.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-stone-300 hover:text-white transition-colors p-0.5"
+                title="Follow us on Instagram"
+                aria-label="Instagram"
+              >
+                <InstagramIcon className="w-3.5 h-3.5" />
+              </a>
+            </div>
             <a
               href={getGeneralWhatsAppUrl()}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 bg-[#1f6133] hover:bg-[#287a41] text-white px-2.5 py-0.5 rounded-full text-xs font-medium transition-colors"
+              className="inline-flex items-center gap-1 bg-[#1f6133] hover:bg-[#287a41] text-white px-2 py-0.5 rounded-full text-[10px] sm:text-xs font-medium transition-colors"
             >
-              <MessageSquare className="w-3.5 h-3.5 text-emerald-300" />
-              Chat on WhatsApp
+              <MessageSquare className="w-3 h-3 text-emerald-300" />
+              <span>WhatsApp</span>
             </a>
           </div>
         </div>
@@ -142,18 +162,25 @@ export default function Navbar() {
 
       {/* Main Navbar */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between h-16 sm:h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-3 group">
-            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#11341c] to-[#1f6133] flex items-center justify-center text-white shadow-md shadow-emerald-950/20 group-hover:scale-105 transition-transform">
-              <Tractor className="w-6 h-6 text-[#d4b672]" />
+          <Link href="/" className="flex items-center gap-2.5 sm:gap-3.5 group">
+            <div className="relative w-9 h-9 sm:w-12 sm:h-12 rounded-xl bg-white p-1 flex items-center justify-center shadow-sm border border-stone-200/90 group-hover:scale-105 group-hover:border-[#11341c]/40 transition-all shrink-0">
+              <Image
+                src="/logo-icon.png"
+                alt="Prakash Agri Tools Logo"
+                width={44}
+                height={44}
+                priority
+                className="w-full h-full object-contain"
+              />
             </div>
             <div>
-              <span className="block text-xl sm:text-2xl font-black tracking-tight text-[#11341c] leading-none font-serif">
-                PRAKASH AGRI TOOLS
+              <span className="block text-base sm:text-2xl font-black tracking-tight text-[#11341c] leading-none font-serif">
+                PRAKASH <span className="text-[#e26d0a]">AGRI TOOLS</span>
               </span>
-              <span className="block text-[11px] sm:text-xs tracking-wider uppercase font-semibold text-stone-500 mt-0.5">
-                Agricultural Machinery & Spares
+              <span className="block text-[9px] sm:text-[11px] tracking-wider uppercase font-bold text-stone-500 mt-0.5">
+                Powering Agriculture • Estd. 2009
               </span>
             </div>
           </Link>
@@ -292,26 +319,26 @@ export default function Navbar() {
             </a>
           </div>
 
-          {/* Mobile Menu Button */}
-          <div className="flex lg:hidden items-center gap-2">
+          {/* Mobile Action Buttons */}
+          <div className="flex lg:hidden items-center gap-1.5">
             <a
               href={getGeneralWhatsAppUrl()}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2.5 bg-[#11341c] text-white rounded-xl shadow-xs"
+              className="p-2 bg-[#11341c] text-white rounded-lg shadow-xs hover:bg-[#1f6133] transition-colors"
               aria-label="WhatsApp"
             >
-              <MessageSquare className="w-5 h-5 text-[#d4b672]" />
+              <MessageSquare className="w-4 h-4 text-[#d4b672]" />
             </a>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2.5 rounded-xl text-stone-700 hover:bg-stone-100 border border-stone-200"
+              className="p-2 rounded-lg text-stone-700 hover:bg-stone-100 border border-stone-200 transition-colors"
               aria-label="Toggle menu"
             >
               {mobileMenuOpen ? (
-                <X className="w-6 h-6" />
+                <X className="w-5 h-5" />
               ) : (
-                <Menu className="w-6 h-6" />
+                <Menu className="w-5 h-5" />
               )}
             </button>
           </div>
@@ -398,23 +425,46 @@ export default function Navbar() {
             Contact Us
           </Link>
 
-          <div className="pt-4 border-t border-stone-200 space-y-2">
-            <a
-              href={`tel:${BUSINESS_INFO.phoneRaw}`}
-              className="w-full flex items-center justify-center gap-2 border border-stone-200 py-3 rounded-xl text-sm font-semibold text-stone-900"
-            >
-              <Phone className="w-4 h-4 text-[#11341c]" />
-              Call +91 96660 39444
-            </a>
-            <a
-              href={getGeneralWhatsAppUrl()}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full flex items-center justify-center gap-2 bg-[#11341c] py-3 rounded-xl text-sm font-bold text-white shadow-md"
-            >
-              <MessageSquare className="w-4 h-4 text-[#d4b672]" />
-              WhatsApp Enquiry
-            </a>
+          <div className="pt-3 border-t border-stone-200 space-y-2">
+            <div className="grid grid-cols-2 gap-2">
+              <a
+                href={`tel:${BUSINESS_INFO.phoneRaw}`}
+                className="flex items-center justify-center gap-1.5 border border-stone-200 py-2.5 px-2 rounded-xl text-xs font-semibold text-stone-900 hover:bg-stone-50"
+              >
+                <Phone className="w-3.5 h-3.5 text-[#11341c]" />
+                <span>Call Us</span>
+              </a>
+              <a
+                href={getGeneralWhatsAppUrl()}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-1.5 bg-[#11341c] py-2.5 px-2 rounded-xl text-xs font-bold text-white shadow-xs"
+              >
+                <MessageSquare className="w-3.5 h-3.5 text-[#d4b672]" />
+                <span>WhatsApp</span>
+              </a>
+            </div>
+
+            <div className="pt-1 flex items-center justify-center gap-2">
+              <a
+                href={BUSINESS_INFO.social.facebook}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex-1 flex items-center justify-center gap-1 text-[11px] text-stone-700 hover:text-[#1877F2] py-2 px-2 rounded-lg bg-stone-100 font-medium transition-colors"
+              >
+                <FacebookIcon className="w-3.5 h-3.5 text-[#1877F2]" />
+                <span>Facebook</span>
+              </a>
+              <a
+                href={BUSINESS_INFO.social.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex-1 flex items-center justify-center gap-1 text-[11px] text-stone-700 hover:text-[#E1306C] py-2 px-2 rounded-lg bg-stone-100 font-medium transition-colors"
+              >
+                <InstagramIcon className="w-3.5 h-3.5 text-[#E1306C]" />
+                <span>Instagram</span>
+              </a>
+            </div>
           </div>
         </div>
       )}

@@ -1,8 +1,10 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Tractor, ShieldCheck, Clock, MapPin, Phone, MessageSquare, ArrowRight, CheckCircle2 } from "lucide-react";
 import { BUSINESS_INFO, getGeneralWhatsAppUrl } from "@/lib/whatsapp";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import { FacebookIcon, InstagramIcon } from "@/components/icons/SocialIcons";
 
 export const metadata = {
   title: "About Us | Prakash Agri Tools Hyderabad",
@@ -71,8 +73,14 @@ export default function AboutPage() {
 
         {/* Right Info Box */}
         <div className="lg:col-span-5 bg-white p-8 rounded-3xl border border-stone-200 shadow-md space-y-6">
-          <div className="w-14 h-14 rounded-2xl bg-[#11341c] text-[#d4b672] flex items-center justify-center shadow-md">
-            <Tractor className="w-8 h-8" />
+          <div className="w-16 h-16 rounded-2xl bg-white p-1.5 shadow-md border border-stone-200 flex items-center justify-center">
+            <Image
+              src="/logo-icon.png"
+              alt="Prakash Agri Tools Emblem"
+              width={56}
+              height={56}
+              className="w-full h-full object-contain"
+            />
           </div>
 
           <div className="space-y-3">
@@ -106,14 +114,40 @@ export default function AboutPage() {
                 </div>
               </div>
             </div>
+
+            <div className="pt-2 border-t border-stone-100">
+              <span className="text-xs font-semibold text-stone-500 uppercase tracking-wider block mb-2">
+                Field Demos & Updates
+              </span>
+              <div className="flex items-center gap-2">
+                <a
+                  href={BUSINESS_INFO.social.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 flex items-center justify-center gap-1.5 py-2 px-3 rounded-xl bg-stone-100 hover:bg-[#E1306C]/10 text-stone-700 hover:text-[#E1306C] text-xs font-semibold transition-colors"
+                >
+                  <InstagramIcon className="w-4 h-4 text-[#E1306C]" />
+                  <span>Instagram</span>
+                </a>
+                <a
+                  href={BUSINESS_INFO.social.facebook}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 flex items-center justify-center gap-1.5 py-2 px-3 rounded-xl bg-stone-100 hover:bg-[#1877F2]/10 text-stone-700 hover:text-[#1877F2] text-xs font-semibold transition-colors"
+                >
+                  <FacebookIcon className="w-4 h-4 text-[#1877F2]" />
+                  <span>Facebook</span>
+                </a>
+              </div>
+            </div>
           </div>
 
-          <div className="pt-4 border-t border-stone-100 flex flex-col gap-2">
+          <div className="pt-2 flex flex-col gap-2">
             <a
               href={getGeneralWhatsAppUrl()}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full flex items-center justify-center gap-2 bg-[#11341c] hover:bg-[#1f6133] text-white py-3 px-4 rounded-xl font-bold text-sm shadow-md transition-colors"
+              className="w-full flex items-center justify-center gap-2 bg-[#11341c] hover:bg-[#1f6133] text-white py-2.5 sm:py-3 px-4 rounded-xl font-bold text-xs sm:text-sm shadow-md transition-colors"
             >
               <MessageSquare className="w-4 h-4 text-[#d4b672]" />
               <span>Direct WhatsApp Contact</span>

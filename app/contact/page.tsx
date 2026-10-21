@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Image from "next/image";
 import {
   Phone,
   MessageSquare,
@@ -13,6 +14,7 @@ import {
 } from "lucide-react";
 import { BUSINESS_INFO, getGeneralWhatsAppUrl } from "@/lib/whatsapp";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import { FacebookIcon, InstagramIcon } from "@/components/icons/SocialIcons";
 
 export default function ContactPage() {
   const [customerName, setCustomerName] = useState("");
@@ -194,7 +196,7 @@ export default function ContactPage() {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full flex items-center justify-center gap-2 bg-[#11341c] hover:bg-[#1f6133] disabled:opacity-60 text-white py-3.5 rounded-xl font-bold text-sm shadow-md transition-colors"
+                className="w-full flex items-center justify-center gap-2 bg-[#11341c] hover:bg-[#1f6133] disabled:opacity-60 text-white py-2.5 sm:py-3.5 rounded-xl font-bold text-xs sm:text-sm shadow-md transition-colors"
               >
                 <Send className="w-4 h-4 text-[#d4b672]" />
                 <span>{loading ? "Registering Enquiry..." : "Send Message"}</span>
@@ -206,9 +208,20 @@ export default function ContactPage() {
         {/* Right: Verified Business Information */}
         <div className="lg:col-span-5 space-y-6">
           <div className="bg-white p-8 rounded-3xl border border-stone-200 shadow-sm space-y-6">
-            <h3 className="text-xl font-bold text-stone-900 font-serif">
-              Direct Contact Details
-            </h3>
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-white p-1 flex items-center justify-center shrink-0 shadow-sm border border-stone-200">
+                <Image
+                  src="/logo-icon.png"
+                  alt="Prakash Agri Tools Emblem"
+                  width={36}
+                  height={36}
+                  className="w-full h-full object-contain"
+                />
+              </div>
+              <h3 className="text-xl font-bold text-stone-900 font-serif">
+                Direct Contact Details
+              </h3>
+            </div>
 
             <div className="space-y-4 text-sm text-stone-700">
               <div className="flex items-start gap-3">
@@ -262,10 +275,71 @@ export default function ContactPage() {
                 href={getGeneralWhatsAppUrl()}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20ba59] text-white py-3.5 px-4 rounded-xl font-bold text-sm shadow-md transition-colors"
+                className="w-full flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20ba59] text-white py-2.5 sm:py-3.5 px-4 rounded-xl font-bold text-xs sm:text-sm shadow-md transition-colors"
               >
-                <MessageSquare className="w-5 h-5" />
+                <MessageSquare className="w-4 h-4 sm:w-5 sm:h-5" />
                 <span>Chat Directly on WhatsApp</span>
+              </a>
+            </div>
+          </div>
+
+          {/* Social Media Card */}
+          <div className="bg-white p-6 sm:p-8 rounded-3xl border border-stone-200 shadow-sm space-y-4">
+            <div>
+              <span className="text-xs font-bold text-[#c5a059] uppercase tracking-wider block">
+                Stay Updated
+              </span>
+              <h3 className="text-lg font-bold text-stone-900 font-serif">
+                Follow Us on Social Media
+              </h3>
+              <p className="text-xs text-stone-600 mt-1">
+                Watch machinery field demonstrations, walk-arounds, customer tractor setups, and dispatch updates.
+              </p>
+            </div>
+
+            <div className="space-y-3 pt-1">
+              <a
+                href={BUSINESS_INFO.social.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3.5 p-3.5 rounded-2xl bg-stone-50 hover:bg-stone-100 border border-stone-200/90 transition-all group"
+              >
+                <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-[#f09433] via-[#dc2743] to-[#bc1888] flex items-center justify-center text-white shadow-sm shrink-0 group-hover:scale-105 transition-transform">
+                  <InstagramIcon className="w-5 h-5" />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <span className="block text-sm font-bold text-stone-900 group-hover:text-[#bc1888] transition-colors">
+                    Instagram Profile
+                  </span>
+                  <span className="block text-xs text-stone-500 truncate">
+                    {BUSINESS_INFO.social.instagramHandle}
+                  </span>
+                </div>
+                <span className="text-xs font-semibold text-stone-600 group-hover:translate-x-0.5 transition-transform">
+                  Follow →
+                </span>
+              </a>
+
+              <a
+                href={BUSINESS_INFO.social.facebook}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3.5 p-3.5 rounded-2xl bg-stone-50 hover:bg-stone-100 border border-stone-200/90 transition-all group"
+              >
+                <div className="w-10 h-10 rounded-xl bg-[#1877F2] flex items-center justify-center text-white shadow-sm shrink-0 group-hover:scale-105 transition-transform">
+                  <FacebookIcon className="w-5 h-5" />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <span className="block text-sm font-bold text-stone-900 group-hover:text-[#1877F2] transition-colors">
+                    Facebook Page
+                  </span>
+                  <span className="block text-xs text-stone-500 truncate">
+                    Prakash Agri Tools & Machinery Updates
+                  </span>
+                </div>
+                <span className="text-xs font-semibold text-stone-600 group-hover:translate-x-0.5 transition-transform">
+                  Visit →
+                </span>
               </a>
             </div>
           </div>

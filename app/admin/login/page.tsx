@@ -2,6 +2,7 @@
 
 import React, { useState, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
+import Image from "next/image";
 import { Tractor, Lock, Mail, AlertCircle, ArrowRight } from "lucide-react";
 import Link from "next/link";
 
@@ -44,16 +45,25 @@ function LoginForm() {
 
   return (
     <div className="max-w-md w-full bg-white rounded-3xl p-8 sm:p-10 shadow-2xl border border-stone-800 space-y-6">
-      <div className="text-center space-y-2">
-        <div className="w-16 h-16 rounded-2xl bg-[#11341c] text-[#d4b672] flex items-center justify-center mx-auto shadow-md">
-          <Tractor className="w-8 h-8" />
+      <div className="text-center space-y-3">
+        <div className="w-20 h-20 rounded-2xl bg-white p-2 flex items-center justify-center mx-auto shadow-md border border-stone-200">
+          <Image
+            src="/logo-icon.png"
+            alt="Prakash Agri Tools Logo"
+            width={72}
+            height={72}
+            className="w-full h-full object-contain"
+            priority
+          />
         </div>
-        <h1 className="text-2xl font-black text-stone-900 font-serif">
-          Prakash Agri Tools
-        </h1>
-        <p className="text-xs text-stone-500 font-medium">
-          Catalogue Management Portal & Admin Sign In
-        </p>
+        <div>
+          <h1 className="text-2xl font-black text-stone-900 font-serif">
+            PRAKASH <span className="text-[#e26d0a]">AGRI TOOLS</span>
+          </h1>
+          <p className="text-xs text-stone-500 font-medium mt-1">
+            Powering Agriculture • Catalogue Portal Sign In
+          </p>
+        </div>
       </div>
 
       {error && (
