@@ -26,7 +26,7 @@ async function main() {
       name: "Agricultural Implements",
       slug: "agricultural-implements",
       description: "Heavy-duty tractor attachments and implements engineered for robust field preparation, primary and secondary tillage, seeding, and crop residue management.",
-      image: "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?auto=format&fit=crop&w=1000&q=80",
+      image: "/uploads/WhatsApp%20Image%202026-10-13%20at%2016.44.06.jpeg",
       displayOrder: 1,
       subcategories: [
         { name: "Seed Drills", slug: "seed-drills", description: "Precision seed drilling and simultaneous fertilizer dispensing equipment." },
@@ -49,7 +49,7 @@ async function main() {
       name: "Spraying Equipment",
       slug: "spraying-equipment",
       description: "Comprehensive crop protection solutions ranging from portable battery sprayers to high-capacity tractor-mounted sprayer units.",
-      image: "https://images.unsplash.com/photo-1595974482597-4b8da8879bc5?auto=format&fit=crop&w=1000&q=80",
+      image: "/uploads/WhatsApp%20Image%202026-10-13%20at%2017.51.53.jpeg",
       displayOrder: 2,
       subcategories: [
         { name: "Battery Sprayers", slug: "battery-sprayers", description: "Rechargeable 12V knapsack sprayers with dual-purpose manual backup and high pressure." },
@@ -62,7 +62,7 @@ async function main() {
       name: "Garden & Power Equipment",
       slug: "garden-power-equipment",
       description: "Commercial and landscaping power tools for weed clearing, hedge trimming, tree management, soil sampling, and water transfer.",
-      image: "https://images.unsplash.com/photo-1590682680695-43b964a3ae17?auto=format&fit=crop&w=1000&q=80",
+      image: "/uploads/WhatsApp%20Image%202026-10-13%20at%2017.51.56.jpeg",
       displayOrder: 3,
       subcategories: [
         { name: "Brush Cutters", slug: "brush-cutters", description: "Multi-functional 2-stroke and 4-stroke brush cutters with crop harvesting attachments.", image: "/uploads/honda-umr435t-backpack-brush-cutter.jpeg" },
@@ -78,7 +78,7 @@ async function main() {
       name: "Fodder Equipment",
       slug: "fodder-equipment",
       description: "High-capacity fodder and silage cutting machinery essential for dairy farms and livestock nutrition.",
-      image: "https://images.unsplash.com/photo-1500595046743-cd271d694d30?auto=format&fit=crop&w=1000&q=80",
+      image: "/uploads/WhatsApp%20Image%202026-10-13%20at%2017.52.09%20(2).jpeg",
       displayOrder: 4,
       subcategories: [
         { name: "Chaff Cutters", slug: "chaff-cutters", description: "Motorised, tractor-PTO driven, and manual high-output chaff cutters for green and dry fodder.", image: "/uploads/amar-electric-motorised-chaff-cutter.jpeg" }
@@ -88,7 +88,7 @@ async function main() {
       name: "Spare Parts",
       slug: "spare-parts",
       description: "Authentic, high-wear resistant replacement components, blades, bearings, belts, and accessories for agricultural machinery.",
-      image: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1000&q=80",
+      image: "/uploads/WhatsApp%20Image%202026-10-13%20at%2017.52.09.jpeg",
       displayOrder: 5,
       subcategories: [
         { name: "Rotavator Blades", slug: "rotavator-blades", description: "Boron steel L-type, C-type, and J-type blades for all major rotavator brands." },
