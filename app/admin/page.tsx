@@ -17,48 +17,61 @@ import { prisma } from "@/lib/db";
 export const dynamic = "force-dynamic";
 
 export default async function AdminDashboardOverview() {
-  const [
-    totalPublished,
-    totalDrafts,
-    outOfStock,
-    totalEnquiries,
-    newEnquiriesCount,
-    recentEnquiries,
-    mainCategories,
-    allProducts,
-  ] = await Promise.all([
-    prisma.product.count({ where: { published: true } }),
-    prisma.product.count({ where: { published: false } }),
-    prisma.product.count({ where: { availabilityStatus: "OUT_OF_STOCK" } }),
-    prisma.enquiry.count(),
-    prisma.enquiry.count({ where: { status: "NEW" } }),
-    prisma.enquiry.findMany({
-      take: 6,
-      orderBy: { createdAt: "desc" },
-      include: { product: { select: { name: true, slug: true } } },
-    }),
-    prisma.category.findMany({
-      where: { parentCategoryId: null },
-      include: {
-        subcategories: {
-          include: {
-            _count: { select: { products: true } },
+  let totalPublished = 0;
+  let totalDrafts = 0;
+  let outOfStock = 0;
+  let totalEnquiries = 0;
+  let newEnquiriesCount = 0;
+  let recentEnquiries: any[] = [];
+  let mainCategories: any[] = [];
+  let allProducts: any[] = [];
+
+  try {
+    const res = await Promise.all([
+      prisma.product.count({ where: { published: true } }),
+      prisma.product.count({ where: { published: false } }),
+      prisma.product.count({ where: { availabilityStatus: "OUT_OF_STOCK" } }),
+      prisma.enquiry.count(),
+      prisma.enquiry.count({ where: { status: "NEW" } }),
+      prisma.enquiry.findMany({
+        take: 6,
+        orderBy: { createdAt: "desc" },
+        include: { product: { select: { name: true, slug: true } } },
+      }),
+      prisma.category.findMany({
+        where: { parentCategoryId: null },
+        include: {
+          subcategories: {
+            include: {
+              _count: { select: { products: true } },
+            },
           },
+          _count: { select: { products: true } },
         },
-        _count: { select: { products: true } },
-      },
-      orderBy: { displayOrder: "asc" },
-    }),
-    prisma.product.findMany({
-      select: {
-        id: true,
-        name: true,
-        slug: true,
-        technicalSpecifications: true,
-        media: { select: { id: true } },
-      },
-    }),
-  ]);
+        orderBy: { displayOrder: "asc" },
+      }),
+      prisma.product.findMany({
+        select: {
+          id: true,
+          name: true,
+          slug: true,
+          technicalSpecifications: true,
+          media: { select: { id: true } },
+        },
+      }),
+    ]);
+
+    totalPublished = res[0];
+    totalDrafts = res[1];
+    outOfStock = res[2];
+    totalEnquiries = res[3];
+    newEnquiriesCount = res[4];
+    recentEnquiries = res[5];
+    mainCategories = res[6];
+    allProducts = res[7];
+  } catch (err) {
+    console.error("Dashboard overview query error:", err);
+  }
 
   // Check missing specs or images
   const productsMissingData = allProducts.filter(
@@ -208,12 +221,12 @@ export default async function AdminDashboardOverview() {
           </div>
 
           <div className="space-y-3">
-            {mainCategories.map((parent) => {
-              const subcatCount = parent.subcategories.reduce(
-                (sum, s) => sum + s._count.products,
+            {mainCategories.map((parent: any) => {
+              const subcatCount = (parent.subcategories || []).reduce(
+                (sum: number, s: any) => sum + (s._count?.products || 0),
                 0
               );
-              const totalInParent = parent._count.products + subcatCount;
+              const totalInParent = (parent._count?.products || 0) + subcatCount;
 
               return (
                 <div

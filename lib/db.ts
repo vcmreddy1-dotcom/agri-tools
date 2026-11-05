@@ -15,6 +15,17 @@ function getSanitizedDatabaseUrl(): string | undefined {
   // Strip accidental trailing text like "1. Connection string"
   url = url.replace(/1\.\s*Connection\s*string.*$/i, "").trim();
 
+  // For Supabase connection poolers, ensure resilient timeouts & pooling flags
+  if (url.includes("pooler.supabase.com")) {
+    if (!url.includes("connect_timeout")) {
+      const sep = url.includes("?") ? "&" : "?";
+      url = `${url}${sep}connect_timeout=15`;
+    }
+    if (url.includes(":6543") && !url.includes("pgbouncer=true")) {
+      url = `${url}&pgbouncer=true`;
+    }
+  }
+
   return url;
 }
 
