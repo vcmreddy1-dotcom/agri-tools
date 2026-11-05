@@ -61,10 +61,17 @@ export async function POST(req: NextRequest) {
     });
 
     return response;
-  } catch (err) {
+  } catch (err: any) {
     console.error("Login error:", err);
+    const message =
+      process.env.NODE_ENV === "development"
+        ? err?.message || "Internal server error"
+        : err?.code === "P1001"
+        ? "Database unreachable. Please check connection pooler."
+        : "Internal server error";
+
     return NextResponse.json(
-      { error: "Internal server error" },
+      { error: message },
       { status: 500 }
     );
   }
