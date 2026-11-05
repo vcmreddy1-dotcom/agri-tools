@@ -73,6 +73,11 @@ export default function ProductForm({ initialData, isEdit = false }: ProductForm
   );
   const [imageUrlInput, setImageUrlInput] = useState("");
   const [uploading, setUploading] = useState(false);
+  const [uploadSavings, setUploadSavings] = useState<{
+    original: string;
+    optimized: string;
+    percent: number;
+  } | null>(null);
 
   // Specifications key-value pairs
   const [specs, setSpecs] = useState<{ key: string; value: string }[]>(() => {
@@ -132,6 +137,13 @@ export default function ProductForm({ initialData, isEdit = false }: ProductForm
       if (!res.ok) throw new Error(data.error || "Upload failed");
 
       setMediaList((prev) => [...prev, { mediaUrl: data.url, altText: name }]);
+      if (data.savingsPercent !== undefined) {
+        setUploadSavings({
+          original: data.originalSize,
+          optimized: data.optimizedSize,
+          percent: data.savingsPercent,
+        });
+      }
     } catch (err: unknown) {
       const msg = err instanceof Error ? err.message : "Upload failed";
       setError(msg);
@@ -530,6 +542,15 @@ export default function ProductForm({ initialData, isEdit = false }: ProductForm
             </div>
           </div>
         </div>
+
+        {uploadSavings && (
+          <div className="flex items-center gap-2 p-3 bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs rounded-2xl animate-fade-in">
+            <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+            <span>
+              <strong>Auto-optimized:</strong> Converted to WebP ({uploadSavings.original} → {uploadSavings.optimized}, saving {uploadSavings.percent}% storage space).
+            </span>
+          </div>
+        )}
       </div>
 
       {/* Verified Technical Specifications */}
