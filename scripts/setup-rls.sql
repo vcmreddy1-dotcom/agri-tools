@@ -10,6 +10,7 @@ ALTER TABLE public.products ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.product_media ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.enquiries ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.admin_users ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.uploaded_images ENABLE ROW LEVEL SECURITY;
 
 -- 2. Drop existing policies to allow safe idempotency
 DROP POLICY IF EXISTS "Allow public read access to categories" ON public.categories;
@@ -25,6 +26,9 @@ DROP POLICY IF EXISTS "Allow public to insert enquiries" ON public.enquiries;
 DROP POLICY IF EXISTS "Allow admin to manage enquiries" ON public.enquiries;
 
 DROP POLICY IF EXISTS "Allow admin full access to admin users" ON public.admin_users;
+
+DROP POLICY IF EXISTS "Allow public read access to uploaded images" ON public.uploaded_images;
+DROP POLICY IF EXISTS "Allow admin full access to uploaded images" ON public.uploaded_images;
 
 -- ------------------------------------------------------------------------------
 -- 3. CATEGORIES POLICIES
@@ -106,7 +110,24 @@ CREATE POLICY "Allow admin full access to admin users"
   WITH CHECK (true);
 
 -- ------------------------------------------------------------------------------
--- 8. GRANT LEAST-PRIVILEGE PERMISSIONS TO SUPABASE ROLES
+-- 8. UPLOADED IMAGES POLICIES
+-- ------------------------------------------------------------------------------
+-- Public can view uploaded images
+CREATE POLICY "Allow public read access to uploaded images"
+  ON public.uploaded_images
+  FOR SELECT
+  USING (true);
+
+-- Authenticated admins can manage uploaded images
+CREATE POLICY "Allow admin full access to uploaded images"
+  ON public.uploaded_images
+  FOR ALL
+  TO authenticated
+  USING (true)
+  WITH CHECK (true);
+
+-- ------------------------------------------------------------------------------
+-- 9. GRANT LEAST-PRIVILEGE PERMISSIONS TO SUPABASE ROLES
 -- ------------------------------------------------------------------------------
 GRANT USAGE ON SCHEMA public TO anon, authenticated;
 
@@ -114,6 +135,7 @@ GRANT USAGE ON SCHEMA public TO anon, authenticated;
 GRANT SELECT ON public.categories TO anon;
 GRANT SELECT ON public.products TO anon;
 GRANT SELECT ON public.product_media TO anon;
+GRANT SELECT ON public.uploaded_images TO anon;
 GRANT INSERT ON public.enquiries TO anon;
 
 -- Authenticated admin users
@@ -122,5 +144,6 @@ GRANT ALL ON public.products TO authenticated;
 GRANT ALL ON public.product_media TO authenticated;
 GRANT ALL ON public.enquiries TO authenticated;
 GRANT ALL ON public.admin_users TO authenticated;
+GRANT ALL ON public.uploaded_images TO authenticated;
 
 COMMIT;

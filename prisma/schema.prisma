@@ -91,3 +91,17 @@ model AdminUser {
 
   @@map("admin_users")
 }
+
+model UploadedImage {
+  id        String   @id @default(uuid())
+  filename  String
+  mimeType  String   @default("image/webp") @map("mime_type")
+  data      Bytes
+  size      Int
+  width     Int?
+  height    Int?
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@map("uploaded_images")
+}
+
