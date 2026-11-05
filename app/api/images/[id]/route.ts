@@ -32,3 +32,4 @@ export async function GET(
     return new NextResponse("Failed to retrieve image", { status: 500 });
   }
 }
+
