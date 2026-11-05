@@ -11,74 +11,143 @@ import {
   Menu,
   X,
   ChevronDown,
+  ChevronRight,
   Tractor,
   Layers,
   Wrench,
   Sparkles,
+  ArrowRight,
+  CheckCircle2,
 } from "lucide-react";
 import { BUSINESS_INFO, getGeneralWhatsAppUrl } from "@/lib/whatsapp";
 import { FacebookIcon, InstagramIcon } from "@/components/icons/SocialIcons";
 
-interface CategoryNavItem {
+export interface CategoryNavItem {
   name: string;
   slug: string;
-  subcategories?: { name: string; slug: string }[];
+  tagline?: string;
+  subcategories: { name: string; slug: string }[];
 }
 
-const CATEGORY_ITEMS: CategoryNavItem[] = [
+export const RANGE_NAV_ITEMS: CategoryNavItem[] = [
   {
-    name: "Agricultural Implements",
-    slug: "agricultural-implements",
+    name: "LAND PREPARATION",
+    slug: "land-preparation",
+    tagline: "Primary & secondary tillage, deep ploughing, and laser leveling implements",
     subcategories: [
+      { name: "Reversible Plough", slug: "reversible-plough" },
+      { name: "Hydraulic Reversible Plough", slug: "hydraulic-reversible-plough" },
+      { name: "Manual Reversible Plough", slug: "manual-reversible-plough" },
+      { name: "Harrow Mounted", slug: "harrow-mounted" },
+      { name: "Disc Harrow", slug: "disc-harrows" },
+      { name: "Disc Plough", slug: "disc-ploughs" },
+      { name: "MB Plough", slug: "mb-plough" },
+      { name: "Cultivator", slug: "cultivators" },
+      { name: "Rotavator", slug: "rotavators" },
+      { name: "Chisel Plough / Sizzle", slug: "chisel-plough" },
+      { name: "Levelers", slug: "levelers" },
+      { name: "Laser Land Levelers", slug: "laser-land-levelers" },
+      { name: "Bund Farmers / Bund Makers", slug: "disc-ridgers-bund-makers" },
+      { name: "Sub Soiler", slug: "sub-soiler" },
+    ],
+  },
+  {
+    name: "SOWING & PLANTING",
+    slug: "sowing-planting",
+    tagline: "Precision seed drilling, multicrop planters, pneumatic and zero-till DSR equipment",
+    subcategories: [
+      { name: "Manual Seeder", slug: "manual-seeder" },
+      { name: "Seed Doubler", slug: "seed-doubler" },
+      { name: "Manual Seed Drill", slug: "manual-seed-drill" },
+      { name: "Animal Drawn Seed Drill", slug: "animal-drawn-seed-drill" },
+      { name: "Mini Tractor Seed Drill / Planters", slug: "mini-tractor-seed-drill-planters" },
+      { name: "Tractor Drawn Seed Drill / Planters", slug: "tractor-drawn-seed-drill-planters" },
       { name: "Seed Drills", slug: "seed-drills" },
       { name: "Turbo Seeder", slug: "turbo-seeder" },
-      { name: "Rotavators", slug: "rotavators" },
-      { name: "Disc Harrows", slug: "disc-harrows" },
-      { name: "Disc Ploughs", slug: "disc-ploughs" },
-      { name: "Cultivators", slug: "cultivators" },
-      { name: "Laser Land Levelers", slug: "laser-land-levelers" },
-      { name: "Disc Ridgers / Bund Makers", slug: "disc-ridgers-bund-makers" },
-      { name: "Reversible Ploughs", slug: "reversible-ploughs" },
-      { name: "Mulchers", slug: "mulchers" },
-      { name: "Slashers", slug: "slashers" },
-      { name: "Paddy Weeders", slug: "paddy-weeders" },
-      { name: "Mini Tillers", slug: "mini-tillers" },
-      { name: "Weeders", slug: "weeders" },
+      { name: "Potato / Turmeric Planters", slug: "potato-turmeric-planters" },
+      { name: "Maize Planters", slug: "maize-planters" },
+      { name: "Onion Planters", slug: "onion-planters" },
+      { name: "Broad Bed Furrow Planters", slug: "broad-bed-furrow-planters" },
+      { name: "Multicrop Precision Seed cum Fertilizer Planter", slug: "multicrop-precision-seed-cum-fertilizer-planter" },
+      { name: "Zero Till Drill / DSR", slug: "zero-till-drill-dsr" },
+      { name: "Pneumatic Planter", slug: "pneumatic-planter" },
+      { name: "Raised Bed Planters", slug: "raised-bed-planters" },
     ],
   },
   {
-    name: "Spraying Equipment",
-    slug: "spraying-equipment",
+    name: "PLANT PROTECTION",
+    slug: "plant-protection",
+    tagline: "Crop protection sprayers, battery knapsacks, solar units, and tractor boom sprayers",
     subcategories: [
-      { name: "Battery Sprayers", slug: "battery-sprayers" },
-      { name: "Power Sprayers", slug: "power-sprayers" },
-      { name: "Solar Sprayers", slug: "solar-sprayers" },
-      { name: "300L Sprayers", slug: "300l-sprayers" },
+      { name: "Manual Sprayers", slug: "manual-sprayers" },
+      { name: "Solar Sprayer", slug: "solar-sprayers" },
+      { name: "Knapsack Sprayer", slug: "knapsack-sprayers" },
+      { name: "Battery Sprayer", slug: "battery-sprayers" },
+      { name: "Motorised Sprayers", slug: "power-sprayers" },
+      { name: "Mist Blowers", slug: "mist-blowers" },
+      { name: "Knapsack Sprayer with Honda Engine", slug: "knapsack-sprayer-honda-engine" },
+      { name: "HTP Sprayers", slug: "htp-sprayers" },
+      { name: "Tractor Mounted Sprayers", slug: "tractor-mounted-sprayers" },
+      { name: "Boom Sprayers", slug: "300l-sprayers" },
+      { name: "Self Propelled Boom Sprayers", slug: "self-propelled-boom-sprayers" },
+      { name: "Tank Sprayers", slug: "tank-sprayers" },
+      { name: "Fertilizer Spreaders", slug: "fertilizer-spreaders" },
     ],
   },
   {
-    name: "Garden & Power Equipment",
-    slug: "garden-power-equipment",
+    name: "WEEDING",
+    slug: "weeding",
+    tagline: "Mechanical & motorized weed management, cycle weeders, power tillers, and shredders",
     subcategories: [
+      { name: "Manual Weeders", slug: "manual-weeders" },
+      { name: "Cycle Weeders", slug: "cycle-weeders" },
+      { name: "Kono Weeders", slug: "kono-weeders" },
+      { name: "Paddy Weeders 2 Row", slug: "paddy-weeders" },
+      { name: "Power Weeder", slug: "weeders" },
+      { name: "Power Tiller / Mini Tillers", slug: "mini-tillers" },
       { name: "Brush Cutters", slug: "brush-cutters" },
-      { name: "Grass Cutters", slug: "grass-cutters" },
-      { name: "Chain Saws", slug: "chain-saws" },
-      { name: "Hedge Trimmers", slug: "hedge-trimmers" },
-      { name: "Lawn Mowers", slug: "lawn-mowers" },
-      { name: "Earth Augers", slug: "earth-augers" },
-      { name: "Water Pumps", slug: "water-pumps" },
+      { name: "Slashers", slug: "slashers" },
+      { name: "Mulchers", slug: "mulchers" },
     ],
   },
   {
-    name: "Fodder Equipment",
-    slug: "fodder-equipment",
+    name: "CROP HARVESTING",
+    slug: "crop-harvesting",
+    tagline: "Reaping & harvesting machinery: sickles, palm chisels, carbon poles, and rippers",
     subcategories: [
+      { name: "Sickle", slug: "sickle" },
+      { name: "Chisels for Palm Oil", slug: "chisels-for-palm-oil" },
+      { name: "Telescopic Pole Carbon", slug: "telescopic-pole-carbon" },
+      { name: "Aluminium Poles", slug: "aluminium-poles" },
+      { name: "Mini Harvesters", slug: "mini-harvesters" },
+      { name: "Rippers", slug: "rippers" },
+      { name: "Tractor Mounted Rippers", slug: "tractor-mounted-rippers" },
+      { name: "Tractor Mounted Harvesters", slug: "tractor-mounted-harvesters" },
+      { name: "Track Harvesters", slug: "track-harvesters" },
+    ],
+  },
+  {
+    name: "POST HARVESTING",
+    slug: "post-harvesting",
+    tagline: "Threshing, grain cleaning, balers, winnowers, and fodder chaff cutting machines",
+    subcategories: [
+      { name: "Winnowing Fan", slug: "winnowing-fan" },
+      { name: "Multi Threshers", slug: "multi-threshers" },
+      { name: "Maize Shellers", slug: "maize-shellers" },
+      { name: "Maize Dehusker", slug: "maize-dehusker" },
+      { name: "Groundnut Thresher", slug: "groundnut-thresher" },
+      { name: "Spreaders", slug: "spreaders" },
+      { name: "Round Balers", slug: "round-balers" },
+      { name: "Square Balers", slug: "square-balers" },
+      { name: "Hay Rake", slug: "hay-rake" },
+      { name: "Shredders", slug: "shredders" },
       { name: "Chaff Cutters", slug: "chaff-cutters" },
     ],
   },
   {
-    name: "Spare Parts",
+    name: "SPARE PARTS",
     slug: "spare-parts",
+    tagline: "Authentic replacement components: boron steel blades, spray nozzles, belts, and bearings",
     subcategories: [
       { name: "Rotavator Blades", slug: "rotavator-blades" },
       { name: "Seed Drill Parts", slug: "seed-drill-parts" },
@@ -94,14 +163,17 @@ const CATEGORY_ITEMS: CategoryNavItem[] = [
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [mobileProductsOpen, setMobileProductsOpen] = useState(false);
+  const [mobileCategoryOpen, setMobileCategoryOpen] = useState<string | null>(null);
   const [activeCategoryDropdown, setActiveCategoryDropdown] = useState(false);
+  const [selectedCategoryIndex, setSelectedCategoryIndex] = useState(0);
   const pathname = usePathname();
 
   // If in admin dashboard, render simplified or none
   if (pathname.startsWith("/admin")) {
     return null;
   }
+
+  const activeCategory = RANGE_NAV_ITEMS[selectedCategoryIndex] || RANGE_NAV_ITEMS[0];
 
   return (
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-stone-200/80 shadow-xs">
@@ -151,7 +223,7 @@ export default function Navbar() {
               href={getGeneralWhatsAppUrl()}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 bg-[#1f6133] hover:bg-[#287a41] text-white px-2 py-0.5 rounded-full text-[10px] sm:text-xs font-medium transition-colors"
+              className="inline-flex items-center gap-1 bg-[#1f6133] hover:bg-[#287a41] text-white px-2.5 py-0.5 rounded-full text-[10px] sm:text-xs font-medium transition-colors"
             >
               <MessageSquare className="w-3 h-3 text-emerald-300" />
               <span>WhatsApp</span>
@@ -195,10 +267,10 @@ export default function Navbar() {
                   : "text-stone-700 hover:text-[#11341c] hover:bg-stone-50"
               }`}
             >
-              Home
+              HOME
             </Link>
 
-            {/* Products Dropdown / Mega Menu */}
+            {/* Landforce-style "OUR RANGE" Mega Dropdown */}
             <div
               className="relative"
               onMouseEnter={() => setActiveCategoryDropdown(true)}
@@ -206,14 +278,14 @@ export default function Navbar() {
             >
               <Link
                 href="/products"
-                className={`flex items-center gap-1.5 px-3.5 py-2 text-sm font-semibold rounded-lg transition-colors ${
-                  pathname.startsWith("/products")
-                    ? "text-[#11341c] bg-stone-100/90 font-bold"
-                    : "text-stone-700 hover:text-[#11341c] hover:bg-stone-50"
+                className={`flex items-center gap-1.5 px-3.5 py-2 text-sm font-bold tracking-wide rounded-lg transition-colors ${
+                  pathname.startsWith("/products") || activeCategoryDropdown
+                    ? "text-[#11341c] bg-stone-100/90"
+                    : "text-stone-800 hover:text-[#11341c] hover:bg-stone-50"
                 }`}
               >
                 <Layers className="w-4 h-4 text-[#c5a059]" />
-                Products
+                <span>OUR RANGE</span>
                 <ChevronDown
                   className={`w-4 h-4 transition-transform duration-200 ${
                     activeCategoryDropdown ? "rotate-180" : ""
@@ -221,56 +293,135 @@ export default function Navbar() {
                 />
               </Link>
 
-              {/* Mega Dropdown Panel */}
+              {/* Mega Dropdown Panel matching Landforce style */}
               {activeCategoryDropdown && (
-                <div className="absolute left-1/2 -translate-x-1/2 top-full w-[820px] bg-white rounded-2xl shadow-2xl border border-stone-200/90 p-6 grid grid-cols-3 gap-6 animate-in fade-in slide-in-from-top-2 duration-150">
-                  <div className="col-span-3 pb-3 border-b border-stone-100 flex items-center justify-between">
-                    <div className="flex items-center gap-2">
-                      <span className="text-xs font-bold uppercase tracking-wider text-[#11341c]">
-                        Product Categories
-                      </span>
-                      <span className="text-xs text-stone-400">• 5 Main Categories & 34 Subcategories</span>
+                <div className="absolute left-1/2 -translate-x-1/2 top-full w-[960px] xl:w-[1040px] bg-white rounded-2xl shadow-2xl border border-stone-200/90 overflow-hidden animate-in fade-in slide-in-from-top-2 duration-150 z-50">
+                  <div className="flex min-h-[420px]">
+                    {/* LEFT COLUMN: Main Categories List */}
+                    <div className="w-72 bg-[#f6f5f0] border-r border-stone-200 p-3 space-y-1 shrink-0">
+                      <div className="px-3 py-2 border-b border-stone-200/70 mb-2">
+                        <span className="text-[11px] font-black uppercase tracking-wider text-stone-500">
+                          Machinery Categories
+                        </span>
+                      </div>
+                      {RANGE_NAV_ITEMS.map((cat, idx) => {
+                        const isSelected = selectedCategoryIndex === idx;
+                        return (
+                          <button
+                            key={cat.slug}
+                            type="button"
+                            onMouseEnter={() => setSelectedCategoryIndex(idx)}
+                            onClick={() => setSelectedCategoryIndex(idx)}
+                            className={`w-full flex items-center justify-between text-left px-3.5 py-2.5 rounded-xl text-xs font-black tracking-wide uppercase transition-all cursor-pointer ${
+                              isSelected
+                                ? "bg-[#11341c] text-white shadow-md font-black translate-x-1"
+                                : "text-stone-800 hover:bg-stone-200/70 hover:text-stone-900 font-extrabold"
+                            }`}
+                          >
+                            <span>{cat.name}</span>
+                            <ChevronRight
+                              className={`w-4 h-4 transition-transform ${
+                                isSelected ? "text-[#c5a059] translate-x-0.5" : "text-stone-400"
+                              }`}
+                            />
+                          </button>
+                        );
+                      })}
                     </div>
-                    <Link
-                      href="/products"
-                      className="text-xs font-semibold text-[#1f6133] hover:text-[#11341c] hover:underline"
-                    >
-                      View All Products →
-                    </Link>
+
+                    {/* RIGHT COLUMN: Active Category Subcategories */}
+                    <div className="flex-1 p-6 bg-white flex flex-col justify-between">
+                      <div>
+                        {/* Subcategory Header */}
+                        <div className="flex items-center justify-between border-b border-stone-100 pb-3 mb-4">
+                          <div>
+                            <h3 className="text-base font-extrabold text-[#11341c] font-serif tracking-wide">
+                              {activeCategory.name}
+                            </h3>
+                            {activeCategory.tagline && (
+                              <p className="text-xs text-stone-500 mt-0.5">
+                                {activeCategory.tagline}
+                              </p>
+                            )}
+                          </div>
+                          <Link
+                            href={`/products/${activeCategory.slug}`}
+                            className="inline-flex items-center gap-1 text-xs font-bold text-[#1f6133] hover:text-[#11341c] hover:underline shrink-0"
+                          >
+                            <span>View All in {activeCategory.name}</span>
+                            <ArrowRight className="w-3.5 h-3.5" />
+                          </Link>
+                        </div>
+
+                        {/* Subcategories Grid with `>` bullets matching Landforce style */}
+                        <div className="grid grid-cols-2 xl:grid-cols-3 gap-x-6 gap-y-2.5 max-h-[300px] overflow-y-auto pr-2">
+                          {activeCategory.subcategories.map((sub) => (
+                            <Link
+                              key={sub.slug}
+                              href={`/products?category=${sub.slug}`}
+                              className="group flex items-start gap-1.5 py-1 text-xs font-bold text-stone-700 hover:text-[#11341c] transition-colors"
+                            >
+                              <span className="text-stone-400 font-black group-hover:text-[#11341c] group-hover:translate-x-0.5 transition-all select-none">
+                                &gt;
+                              </span>
+                              <span className="leading-snug uppercase tracking-tight group-hover:underline">
+                                {sub.name}
+                              </span>
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Info snippet */}
+                      <div className="pt-3 border-t border-stone-100 flex items-center justify-between text-[11px] text-stone-500">
+                        <span className="flex items-center gap-1.5">
+                          <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
+                          Direct Showroom Stock • Warranty & Genuine Spare Parts Support
+                        </span>
+                        <Link
+                          href="/products"
+                          className="font-bold text-[#11341c] hover:underline"
+                        >
+                          Complete Catalogue ({RANGE_NAV_ITEMS.reduce((acc, c) => acc + c.subcategories.length, 0)} Implements) →
+                        </Link>
+                      </div>
+                    </div>
                   </div>
 
-                  {CATEGORY_ITEMS.map((cat) => (
-                    <div key={cat.slug} className="space-y-2">
-                      <Link
-                        href={`/products/${cat.slug}`}
-                        className="block font-bold text-sm text-[#11341c] hover:text-[#c5a059] transition-colors"
+                  {/* BOTTOM FOOTER BAR matching Landforce Screenshot */}
+                  <div className="bg-[#f0eee6] border-t border-stone-200 px-6 py-3 flex items-center justify-between text-xs">
+                    <div className="flex items-center gap-4">
+                      <div className="inline-flex items-center gap-2 bg-[#11341c] text-white px-3.5 py-1.5 rounded-lg font-bold text-xs shadow-xs">
+                        <MapPin className="w-3.5 h-3.5 text-[#c5a059]" />
+                        <span>Showroom: LB Nagar, Hyderabad</span>
+                      </div>
+                      <a
+                        href={`tel:${BUSINESS_INFO.phoneRaw}`}
+                        className="font-bold text-stone-800 hover:text-[#11341c] hidden sm:inline"
                       >
-                        {cat.name}
-                      </Link>
-                      <ul className="space-y-1 text-xs text-stone-600">
-                        {cat.subcategories?.slice(0, 5).map((sub) => (
-                          <li key={sub.slug}>
-                            <Link
-                              href={`/products?category=${sub.slug}`}
-                              className="hover:text-[#11341c] hover:translate-x-1 transition-all inline-block py-0.5 text-stone-600"
-                            >
-                              • {sub.name}
-                            </Link>
-                          </li>
-                        ))}
-                        {(cat.subcategories?.length ?? 0) > 5 && (
-                          <li>
-                            <Link
-                              href={`/products/${cat.slug}`}
-                              className="text-[#1f6133] font-medium hover:underline text-[11px]"
-                            >
-                              +{(cat.subcategories?.length ?? 0) - 5} more...
-                            </Link>
-                          </li>
-                        )}
-                      </ul>
+                        Call: {BUSINESS_INFO.phoneDisplay}
+                      </a>
                     </div>
-                  ))}
+
+                    <div className="flex items-center gap-4 text-xs font-bold text-stone-700">
+                      <a
+                        href={getGeneralWhatsAppUrl(`Hello Prakash Agri Tools, I would like to enquire about ${activeCategory.name} machinery.`)}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1 text-emerald-700 hover:text-emerald-800 hover:underline"
+                      >
+                        <MessageSquare className="w-3.5 h-3.5" />
+                        <span>WhatsApp Enquiry</span>
+                      </a>
+                      <span className="text-stone-300 hidden md:inline">|</span>
+                      <Link
+                        href="/contact"
+                        className="hover:text-[#11341c] hover:underline hidden md:inline"
+                      >
+                        Visit Showroom
+                      </Link>
+                    </div>
+                  </div>
                 </div>
               )}
             </div>
@@ -283,7 +434,7 @@ export default function Navbar() {
                   : "text-stone-700 hover:text-[#11341c] hover:bg-stone-50"
               }`}
             >
-              About Us
+              ABOUT US
             </Link>
 
             <Link
@@ -294,7 +445,7 @@ export default function Navbar() {
                   : "text-stone-700 hover:text-[#11341c] hover:bg-stone-50"
               }`}
             >
-              Contact Us
+              CONTACT US
             </Link>
           </nav>
 
@@ -353,60 +504,70 @@ export default function Navbar() {
             onClick={() => setMobileMenuOpen(false)}
             className="block px-3 py-2.5 rounded-lg text-base font-semibold text-stone-900 hover:bg-stone-50"
           >
-            Home
+            HOME
           </Link>
 
           <div>
-            <button
-              onClick={() => setMobileProductsOpen(!mobileProductsOpen)}
-              className="w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-base font-semibold text-stone-900 hover:bg-stone-50"
-            >
+            <div className="px-3 py-2 text-xs font-bold uppercase tracking-wider text-[#11341c] bg-stone-100 rounded-lg flex items-center justify-between">
               <span className="flex items-center gap-2">
-                <Layers className="w-4 h-4 text-[#11341c]" />
-                Products & Categories
+                <Layers className="w-4 h-4 text-[#c5a059]" />
+                OUR RANGE (CATEGORIES)
               </span>
-              <ChevronDown
-                className={`w-4 h-4 transition-transform ${
-                  mobileProductsOpen ? "rotate-180" : ""
-                }`}
-              />
-            </button>
+              <Link
+                href="/products"
+                onClick={() => setMobileMenuOpen(false)}
+                className="text-[11px] text-[#1f6133] font-bold underline"
+              >
+                All Products
+              </Link>
+            </div>
 
-            {mobileProductsOpen && (
-              <div className="pl-4 pr-2 py-2 space-y-3 bg-stone-50/70 rounded-xl mt-1 border border-stone-100">
-                <Link
-                  href="/products"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="block text-xs font-bold text-[#11341c] hover:underline pb-1 border-b border-stone-200"
-                >
-                  View All Products & Search →
-                </Link>
-
-                {CATEGORY_ITEMS.map((cat) => (
-                  <div key={cat.slug} className="space-y-1">
-                    <Link
-                      href={`/products/${cat.slug}`}
-                      onClick={() => setMobileMenuOpen(false)}
-                      className="block text-sm font-bold text-stone-900 hover:text-[#11341c]"
+            <div className="space-y-1 mt-2">
+              {RANGE_NAV_ITEMS.map((cat) => {
+                const isOpen = mobileCategoryOpen === cat.slug;
+                return (
+                  <div key={cat.slug} className="border border-stone-100 rounded-xl overflow-hidden">
+                    <button
+                      type="button"
+                      onClick={() => setMobileCategoryOpen(isOpen ? null : cat.slug)}
+                      className="w-full flex items-center justify-between p-3 text-left font-bold text-xs uppercase text-stone-900 hover:bg-stone-50 bg-stone-50/50"
                     >
-                      {cat.name}
-                    </Link>
-                    <div className="pl-2 grid grid-cols-2 gap-1 text-xs text-stone-600">
-                      {cat.subcategories?.slice(0, 4).map((sub) => (
+                      <span>{cat.name}</span>
+                      <ChevronDown
+                        className={`w-4 h-4 transition-transform text-stone-500 ${
+                          isOpen ? "rotate-180" : ""
+                        }`}
+                      />
+                    </button>
+
+                    {isOpen && (
+                      <div className="p-3 bg-white space-y-2 border-t border-stone-100">
                         <Link
-                          key={sub.slug}
-                          href={`/products?category=${sub.slug}`}
+                          href={`/products/${cat.slug}`}
                           onClick={() => setMobileMenuOpen(false)}
-                          className="py-0.5 hover:text-[#11341c]"
+                          className="block text-xs font-extrabold text-[#11341c] pb-1 border-b border-stone-100"
                         >
-                          • {sub.name}
+                          View All in {cat.name} →
                         </Link>
-                      ))}
-                    </div>
+                        <div className="grid grid-cols-1 gap-1.5 pt-1">
+                          {cat.subcategories.map((sub) => (
+                            <Link
+                              key={sub.slug}
+                              href={`/products?category=${sub.slug}`}
+                              onClick={() => setMobileMenuOpen(false)}
+                              className="text-xs text-stone-700 hover:text-[#11341c] py-1 flex items-center gap-1 font-medium"
+                            >
+                              <span className="text-stone-400">&gt;</span>
+                              <span>{sub.name}</span>
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                    )}
                   </div>
-                ))}
-              </div>
-            )}
+                );
+              })}
+            </div>
           </div>
 
           <Link
@@ -414,7 +575,7 @@ export default function Navbar() {
             onClick={() => setMobileMenuOpen(false)}
             className="block px-3 py-2.5 rounded-lg text-base font-semibold text-stone-900 hover:bg-stone-50"
           >
-            About Us
+            ABOUT US
           </Link>
 
           <Link
@@ -422,7 +583,7 @@ export default function Navbar() {
             onClick={() => setMobileMenuOpen(false)}
             className="block px-3 py-2.5 rounded-lg text-base font-semibold text-stone-900 hover:bg-stone-50"
           >
-            Contact Us
+            CONTACT US
           </Link>
 
           <div className="pt-3 border-t border-stone-200 space-y-2">
