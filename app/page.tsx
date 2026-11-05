@@ -31,11 +31,11 @@ export default async function HomePage() {
 
   // Aggregate total products per parent category (parent products + its subcategory products)
   const categoryStats = categories.map((cat) => {
-    const subcatCount = cat.subcategories.reduce(
-      (acc, s) => acc + s._count.products,
+    const subcatCount = (cat.subcategories || []).reduce(
+      (acc: number, s) => acc + (s._count?.products || 0),
       0
     );
-    const totalCount = cat._count.products + subcatCount;
+    const totalCount = (cat._count?.products || 0) + subcatCount;
     return {
       ...cat,
       totalCount,

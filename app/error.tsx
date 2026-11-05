@@ -40,6 +40,14 @@ export default function GlobalError({
           <p className="text-xs text-stone-600 leading-relaxed">
             We are temporarily synchronizing our machinery inventory. Please reload or reach out directly to our showroom team.
           </p>
+          {error?.message && (
+            <div className="p-2.5 bg-red-50 border border-red-200 rounded-xl text-left mt-2">
+              <span className="text-[10px] font-bold text-red-800 uppercase block">Diagnostic Details:</span>
+              <p className="text-[11px] font-mono text-red-700 break-words mt-0.5">
+                {error.message}
+              </p>
+            </div>
+          )}
         </div>
 
         <div className="pt-2 space-y-3">
