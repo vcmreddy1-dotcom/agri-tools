@@ -33,7 +33,7 @@ const FALLBACK_CATEGORIES: CategoryWithSubcategories[] = [
     slug: "land-preparation",
     description:
       "Primary & secondary tillage machinery: Reversible ploughs, disc harrows, cultivators, rotavators, and laser levelers.",
-    image: "/uploads/WhatsApp%20Image%202026-10-13%20at%2016.44.06.jpeg",
+    image: "/website-photos/agricultural-machinery-rotary-tiller-tractor-rotovator.avif",
     displayOrder: 1,
     subcategories: [
       { id: "sub-1", name: "Reversible Plough", slug: "reversible-plough", _count: { products: 1 } },
@@ -59,7 +59,7 @@ const FALLBACK_CATEGORIES: CategoryWithSubcategories[] = [
     slug: "sowing-planting",
     description:
       "Precision seed drilling, multicrop planters, pneumatic and zero-till DSR equipment.",
-    image: "/uploads/WhatsApp%20Image%202026-10-13%20at%2016.44.11.jpeg",
+    image: "/website-photos/maschiogaspardopneumaticplantervacuumprecisionsp4rows.webp",
     displayOrder: 2,
     subcategories: [
       { id: "sub-15", name: "Manual Seeder", slug: "manual-seeder", _count: { products: 1 } },
@@ -87,7 +87,7 @@ const FALLBACK_CATEGORIES: CategoryWithSubcategories[] = [
     slug: "plant-protection",
     description:
       "Crop protection sprayers, battery knapsacks, solar units, and tractor boom sprayers.",
-    image: "/uploads/WhatsApp%20Image%202026-10-13%20at%2017.51.53.jpeg",
+    image: "/website-photos/high-ground-clearance-self-propelled-boom-sprayer-with-50hp-engine.avif",
     displayOrder: 3,
     subcategories: [
       { id: "sub-31", name: "Manual Sprayers", slug: "manual-sprayers", _count: { products: 1 } },
@@ -112,7 +112,7 @@ const FALLBACK_CATEGORIES: CategoryWithSubcategories[] = [
     slug: "weeding",
     description:
       "Mechanical & motorized weed management, cycle weeders, power tillers, and shredders.",
-    image: "/uploads/heavy-duty-7hp-power-weeder.jpeg",
+    image: "/website-photos/honda-fj500-power-weeder-500x500.webp",
     displayOrder: 4,
     subcategories: [
       { id: "sub-44", name: "Manual Weeders", slug: "manual-weeders", _count: { products: 1 } },
@@ -133,7 +133,7 @@ const FALLBACK_CATEGORIES: CategoryWithSubcategories[] = [
     slug: "crop-harvesting",
     description:
       "Reaping & harvesting machinery: sickles, palm chisels, carbon poles, and rippers.",
-    image: "/uploads/brush-cutter-paddy-harvesting.jpeg",
+    image: "/website-photos/gam-crawler-combine-harvester-2200mm-cutting-width-hst-transmission-rubber-tracked-2242206656-mus3n4bw.avif",
     displayOrder: 5,
     subcategories: [
       { id: "sub-53", name: "Sickle", slug: "sickle", _count: { products: 1 } },
@@ -154,7 +154,7 @@ const FALLBACK_CATEGORIES: CategoryWithSubcategories[] = [
     slug: "post-harvesting",
     description:
       "Threshing, grain cleaning, balers, winnowers, and fodder chaff cutting machines.",
-    image: "/uploads/WhatsApp%20Image%202026-10-13%20at%2017.52.09%20(2).jpeg",
+    image: "/website-photos/round-straw-baler-jrb310.jpg",
     displayOrder: 6,
     subcategories: [
       { id: "sub-62", name: "Winnowing Fan", slug: "winnowing-fan", _count: { products: 1 } },
