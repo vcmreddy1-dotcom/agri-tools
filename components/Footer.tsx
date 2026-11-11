@@ -26,23 +26,50 @@ export default function Footer() {
       {/* Top Banner inside Footer */}
       <div className="border-b border-stone-800/80 bg-[#11341c]/60 py-8 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-xl bg-white p-1.5 flex items-center justify-center shrink-0 shadow-md border border-stone-200">
-              <Image
-                src="/logo-icon.png"
-                alt="Prakash Agri Tools Emblem"
-                width={48}
-                height={48}
-                className="w-full h-full object-contain"
-              />
+          <div className="flex flex-wrap items-center gap-4">
+            {/* Prakash Agri Tools Logo */}
+            <div className="flex items-center gap-3">
+              <div className="w-12 h-12 rounded-xl bg-white p-1.5 flex items-center justify-center shrink-0 shadow-md border border-stone-200">
+                <Image
+                  src="/logo-icon.png"
+                  alt="Prakash Agri Tools Emblem"
+                  width={48}
+                  height={48}
+                  className="w-full h-full object-contain"
+                />
+              </div>
+              <div>
+                <h3 className="text-base sm:text-lg font-bold text-white uppercase tracking-tight">
+                  Prakash <span className="text-[#F97316]">Agri Tools</span>
+                </h3>
+                <p className="text-[11px] text-stone-400">
+                  Powering Agriculture • Showroom Estd. 2009
+                </p>
+              </div>
             </div>
-            <div>
-              <h3 className="text-lg font-bold text-white uppercase tracking-tight">
-                Prakash <span className="text-[#F97316]">Agri Tools</span>
-              </h3>
-              <p className="text-xs text-stone-400">
-                Powering Agriculture • Agricultural Machinery & Spares Showroom • Estd. 2009
-              </p>
+
+            {/* Divider */}
+            <div className="h-8 w-[1px] bg-stone-700 hidden sm:block mx-1" />
+
+            {/* Eruvaka Agriculture Solutions Logo */}
+            <div className="flex items-center gap-3">
+              <div className="w-12 h-12 rounded-xl bg-[#1e232a] p-1 flex items-center justify-center shrink-0 shadow-md border border-stone-700 overflow-hidden">
+                <Image
+                  src="/eruvaka-logo-badge.png"
+                  alt="Eruvaka Agriculture Solutions Logo"
+                  width={48}
+                  height={48}
+                  className="w-full h-full object-cover rounded-lg"
+                />
+              </div>
+              <div>
+                <h3 className="text-base sm:text-lg font-bold text-[#F97316] uppercase tracking-tight">
+                  ERUVAKA <span className="text-emerald-400">AGRI SOLUTIONS</span>
+                </h3>
+                <p className="text-[11px] text-stone-400">
+                  Innovative Machinery & Farm Equipment
+                </p>
+              </div>
             </div>
           </div>
 
@@ -82,9 +109,23 @@ export default function Footer() {
                   className="w-full h-full object-contain"
                 />
               </div>
-              <span className="text-xl font-bold tracking-tight text-white uppercase">
-                PRAKASH <span className="text-[#F97316]">AGRI TOOLS</span>
-              </span>
+              <div className="w-10 h-10 rounded-xl bg-[#1e232a] p-1 flex items-center justify-center shrink-0 shadow-sm border border-stone-700 overflow-hidden">
+                <Image
+                  src="/eruvaka-logo-badge.png"
+                  alt="Eruvaka Agriculture Solutions"
+                  width={36}
+                  height={36}
+                  className="w-full h-full object-cover rounded-lg"
+                />
+              </div>
+              <div>
+                <span className="block text-base font-black tracking-tight text-white uppercase leading-none">
+                  PRAKASH <span className="text-[#F97316]">AGRI TOOLS</span>
+                </span>
+                <span className="block text-[10px] font-bold text-emerald-400 uppercase tracking-wider mt-1">
+                  & ERUVAKA AGRI SOLUTIONS
+                </span>
+              </div>
             </div>
             <p className="text-sm text-stone-400 leading-relaxed max-w-md">
               Established in 2009 in LB Nagar, Hyderabad. We provide farmers, contractors, and horticulturists with reliable agricultural implements, sprayers, fodder machines, and genuine replacement spare parts.

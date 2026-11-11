@@ -136,18 +136,28 @@ export default async function HomePage() {
                   Your browser does not support the video tag.
                 </video>
 
-                {/* Brand watermark badge */}
-                <div className="absolute top-4 right-4 bg-white/95 backdrop-blur-md rounded-2xl p-2 shadow-lg flex items-center gap-2 border border-stone-200/60 z-10">
-                  <Image
-                    src="/logo-icon.png"
-                    alt="Prakash Agri Tools Emblem"
-                    width={28}
-                    height={28}
-                    className="w-7 h-7 object-contain"
-                  />
-                  <div className="pr-1 text-left">
-                    <span className="block text-[10px] font-black leading-none text-[#11341c]">PRAKASH</span>
-                    <span className="block text-[9px] font-bold leading-none text-[#F97316]">AGRI TOOLS</span>
+                {/* Brand watermark badge showcasing both logos */}
+                <div className="absolute top-4 right-4 bg-white/95 backdrop-blur-md rounded-2xl p-2 shadow-lg flex items-center gap-2.5 border border-stone-200/60 z-10">
+                  <div className="flex items-center gap-1.5">
+                    <Image
+                      src="/logo-icon.png"
+                      alt="Prakash Agri Tools Emblem"
+                      width={26}
+                      height={26}
+                      className="w-6.5 h-6.5 object-contain"
+                    />
+                    <div className="h-6 w-[1px] bg-stone-300 mx-0.5" />
+                    <Image
+                      src="/eruvaka-logo-badge.png"
+                      alt="Eruvaka Agriculture Solutions"
+                      width={26}
+                      height={26}
+                      className="w-6.5 h-6.5 object-cover rounded-md"
+                    />
+                  </div>
+                  <div className="pr-1 text-left hidden sm:block">
+                    <span className="block text-[10px] font-black leading-none text-[#11341c]">PRAKASH AGRI</span>
+                    <span className="block text-[8px] font-bold leading-none text-[#F97316] mt-0.5">& ERUVAKA SOLUTIONS</span>
                   </div>
                 </div>
 

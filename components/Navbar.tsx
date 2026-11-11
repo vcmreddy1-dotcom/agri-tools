@@ -248,25 +248,53 @@ export default function Navbar() {
       {/* Main Navbar */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 sm:h-20">
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-2.5 sm:gap-3.5 group">
-            <div className="relative w-9 h-9 sm:w-12 sm:h-12 rounded-xl bg-white p-1 flex items-center justify-center shadow-sm border border-stone-200/90 group-hover:scale-105 group-hover:border-[#11341c]/40 transition-all shrink-0">
-              <Image
-                src="/logo-icon.png"
-                alt="Prakash Agri Tools Logo"
-                width={44}
-                height={44}
-                priority
-                className="w-full h-full object-contain"
-              />
+          {/* Dual Brand Logos: Prakash Agri Tools & Eruvaka Agriculture Solutions */}
+          <Link href="/" className="flex items-center gap-2 sm:gap-3 group">
+            {/* Primary Brand: Prakash Agri Tools */}
+            <div className="flex items-center gap-2 sm:gap-2.5">
+              <div className="relative w-9 h-9 sm:w-11 sm:h-11 rounded-xl bg-white p-1 flex items-center justify-center shadow-sm border border-stone-200/90 group-hover:scale-105 group-hover:border-[#11341c]/40 transition-all shrink-0">
+                <Image
+                  src="/logo-icon.png"
+                  alt="Prakash Agri Tools Logo"
+                  width={40}
+                  height={40}
+                  priority
+                  className="w-full h-full object-contain"
+                />
+              </div>
+              <div>
+                <span className="block text-sm sm:text-xl font-black tracking-tight text-[#11341c] leading-none">
+                  PRAKASH <span className="text-[#F97316]">AGRI TOOLS</span>
+                </span>
+                <span className="block text-[8px] sm:text-[10px] tracking-wider uppercase font-bold text-stone-500 mt-0.5">
+                  Powering Agriculture • Estd. 2009
+                </span>
+              </div>
             </div>
-            <div>
-              <span className="block text-base sm:text-2xl font-black tracking-tight text-[#11341c] leading-none">
-                PRAKASH <span className="text-[#F97316]">AGRI TOOLS</span>
-              </span>
-              <span className="block text-[9px] sm:text-[11px] tracking-wider uppercase font-bold text-stone-500 mt-0.5">
-                Powering Agriculture • Estd. 2009
-              </span>
+
+            {/* Elegant Divider */}
+            <div className="h-6 sm:h-8 w-[1px] bg-stone-300 hidden md:block mx-0.5" />
+
+            {/* Secondary Brand: Eruvaka Agriculture Solutions */}
+            <div className="hidden md:flex items-center gap-2">
+              <div className="relative w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-[#1e232a] p-0.5 flex items-center justify-center shadow-sm border border-stone-700/60 group-hover:scale-105 transition-all shrink-0 overflow-hidden">
+                <Image
+                  src="/eruvaka-logo-badge.png"
+                  alt="Eruvaka Agriculture Solutions Logo"
+                  width={38}
+                  height={38}
+                  priority
+                  className="w-full h-full object-cover rounded-lg"
+                />
+              </div>
+              <div className="hidden xl:block">
+                <span className="block text-[11px] font-black tracking-tight text-[#F97316] leading-none">
+                  ERUVAKA
+                </span>
+                <span className="block text-[8px] tracking-wider uppercase font-bold text-emerald-800 leading-none mt-0.5">
+                  AGRICULTURE SOLUTIONS
+                </span>
+              </div>
             </div>
           </Link>
 
