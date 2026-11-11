@@ -119,15 +119,25 @@ export default async function HomePage() {
               </div>
             </div>
 
-            {/* Right Card / Machine Visual Showcase */}
+            {/* Right Card / Machine Visual Showcase with Video */}
             <div className="lg:col-span-5 relative">
-              <div className="relative rounded-3xl overflow-hidden border-2 border-[#c5a059]/40 shadow-2xl bg-stone-900 aspect-4/3 lg:aspect-square">
-                <img
-                  src={`/uploads/${encodeURIComponent("WhatsApp Image 2026-10-13 at 16.44.01.jpeg")}`}
-                  alt="Tractor with disc harrow working in field - Prakash Agri Tools"
+              <div className="relative rounded-3xl overflow-hidden border-2 border-[#F97316]/40 shadow-2xl bg-stone-900 aspect-4/3 lg:aspect-square">
+                {/* Autoplay looping video replacing static photo */}
+                <video
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  preload="auto"
+                  poster={`/uploads/${encodeURIComponent("WhatsApp Image 2026-10-13 at 16.44.01.jpeg")}`}
                   className="w-full h-full object-cover object-center"
-                />
-                <div className="absolute top-4 right-4 bg-white/95 backdrop-blur-md rounded-2xl p-2 shadow-lg flex items-center gap-2 border border-stone-200/60">
+                >
+                  <source src="/videos/hero-machinery.mp4" type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+
+                {/* Brand watermark badge */}
+                <div className="absolute top-4 right-4 bg-white/95 backdrop-blur-md rounded-2xl p-2 shadow-lg flex items-center gap-2 border border-stone-200/60 z-10">
                   <Image
                     src="/logo-icon.png"
                     alt="Prakash Agri Tools Emblem"
@@ -137,15 +147,17 @@ export default async function HomePage() {
                   />
                   <div className="pr-1 text-left">
                     <span className="block text-[10px] font-black leading-none text-[#11341c]">PRAKASH</span>
-                    <span className="block text-[9px] font-bold leading-none text-[#e26d0a]">AGRI TOOLS</span>
+                    <span className="block text-[9px] font-bold leading-none text-[#F97316]">AGRI TOOLS</span>
                   </div>
                 </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-6">
-                  <span className="text-[#d4b672] text-xs font-bold uppercase tracking-wider">
-                    Featured Implement
+
+                {/* Bottom title overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent flex flex-col justify-end p-6 z-10 pointer-events-none">
+                  <span className="text-[#F97316] text-xs font-bold uppercase tracking-wider">
+                    Machinery in Action
                   </span>
                   <p className="text-white text-lg font-bold uppercase tracking-tight">
-                    Rotavators, Seed Drills & Laser Levelers
+                    Rotavators, Seed Drills & Tillage Equipment
                   </p>
                   <p className="text-stone-300 text-xs mt-1">
                     Direct stock available with warranty and spare parts support.
