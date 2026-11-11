@@ -17,12 +17,18 @@ function getSanitizedDatabaseUrl(): string | undefined {
 
   // For Supabase connection poolers, ensure resilient timeouts & pooling flags
   if (url.includes("pooler.supabase.com")) {
+    // Automatically rewrite port 5432 to transaction pooler port 6543 (required for serverless/Vercel)
+    if (url.includes(":5432")) {
+      url = url.replace(":5432", ":6543");
+    }
+
     if (!url.includes("connect_timeout")) {
       const sep = url.includes("?") ? "&" : "?";
       url = `${url}${sep}connect_timeout=15`;
     }
     if (url.includes(":6543") && !url.includes("pgbouncer=true")) {
-      url = `${url}&pgbouncer=true`;
+      const sep = url.includes("?") ? "&" : "?";
+      url = `${url}${sep}pgbouncer=true`;
     }
   }
 

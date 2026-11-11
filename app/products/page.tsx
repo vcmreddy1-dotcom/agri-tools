@@ -37,14 +37,26 @@ export default async function ProductsPage({
   // Find active category if filtered
   let activeCategoryName = "All Products";
   if (category) {
-    const matched = await prisma.category.findUnique({
-      where: { slug: category },
-      select: { name: true, parentCategory: { select: { name: true } } },
-    });
-    if (matched) {
-      activeCategoryName = matched.parentCategory
-        ? `${matched.parentCategory.name} > ${matched.name}`
-        : matched.name;
+    try {
+      const matched = await prisma.category.findUnique({
+        where: { slug: category },
+        select: { name: true, parentCategory: { select: { name: true } } },
+      });
+      if (matched) {
+        activeCategoryName = matched.parentCategory
+          ? `${matched.parentCategory.name} > ${matched.name}`
+          : matched.name;
+      } else {
+        activeCategoryName = category
+          .split("-")
+          .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+          .join(" ");
+      }
+    } catch {
+      activeCategoryName = category
+        .split("-")
+        .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+        .join(" ");
     }
   }
 
@@ -61,13 +73,13 @@ export default async function ProductsPage({
       {/* Header Banner */}
       <div className="bg-[#11341c] rounded-3xl p-6 sm:p-10 text-white relative overflow-hidden shadow-lg">
         <div className="relative z-10 max-w-2xl space-y-2">
-          <span className="text-xs font-bold text-[#c5a059] uppercase tracking-wider">
+          <span className="text-xs font-bold text-[#F97316] uppercase tracking-wider">
             Verified Machinery Catalogue
           </span>
-          <h1 className="text-2xl sm:text-4xl font-extrabold font-serif">
+          <h1 className="text-2xl sm:text-4xl font-extrabold uppercase tracking-tight">
             {activeCategoryName}
           </h1>
-          <p className="text-xs sm:text-sm text-stone-300 leading-relaxed">
+          <p className="text-xs sm:text-sm text-stone-200 leading-relaxed">
             Discover verified agricultural machinery, implements, sprayers, and genuine spare parts. Click any item to view specifications or enquire for the latest price on WhatsApp.
           </p>
         </div>
@@ -84,7 +96,7 @@ export default async function ProductsPage({
               name="search"
               defaultValue={search || ""}
               placeholder="Search by name, model (e.g. 9 Tyne, Robusto, 300L)..."
-              className="w-full pl-10 pr-3.5 py-2.5 text-xs sm:text-sm rounded-xl border border-stone-200 focus:outline-none focus:ring-2 focus:ring-[#11341c] text-stone-900"
+              className="w-full pl-10 pr-3.5 py-2.5 text-xs sm:text-sm rounded-xl border border-stone-200 focus:outline-none focus:ring-2 focus:ring-[#F97316] text-stone-900"
             />
           </div>
 
@@ -93,7 +105,7 @@ export default async function ProductsPage({
             <select
               name="category"
               defaultValue={category || ""}
-              className="w-full px-3.5 py-2.5 text-xs sm:text-sm rounded-xl border border-stone-200 focus:outline-none focus:ring-2 focus:ring-[#11341c] text-stone-900 bg-white"
+              className="w-full px-3.5 py-2.5 text-xs sm:text-sm rounded-xl border border-stone-200 focus:outline-none focus:ring-2 focus:ring-[#F97316] text-stone-900 bg-white"
             >
               <option value="">All Categories & Subcategories</option>
               {mainCategories.map((main) => (
@@ -114,7 +126,7 @@ export default async function ProductsPage({
             <select
               name="availability"
               defaultValue={availability || ""}
-              className="w-full px-3 py-2.5 text-xs sm:text-sm rounded-xl border border-stone-200 focus:outline-none focus:ring-2 focus:ring-[#11341c] text-stone-900 bg-white"
+              className="w-full px-3 py-2.5 text-xs sm:text-sm rounded-xl border border-stone-200 focus:outline-none focus:ring-2 focus:ring-[#F97316] text-stone-900 bg-white"
             >
               <option value="">Any Status</option>
               <option value="AVAILABLE">Available</option>
@@ -127,7 +139,7 @@ export default async function ProductsPage({
           <div className="sm:col-span-1">
             <button
               type="submit"
-              className="w-full h-full bg-[#11341c] hover:bg-[#1f6133] text-white py-2.5 rounded-xl font-bold text-xs sm:text-sm flex items-center justify-center transition-colors"
+              className="w-full h-full bg-[#F97316] hover:bg-[#EA580C] text-white py-2.5 rounded-xl font-semibold text-xs sm:text-sm flex items-center justify-center transition-colors cursor-pointer"
             >
               Filter
             </button>
@@ -141,7 +153,7 @@ export default async function ProductsPage({
             href="/products"
             className={`px-3 py-1.5 rounded-lg shrink-0 font-medium transition-colors ${
               !category
-                ? "bg-[#11341c] text-white"
+                ? "bg-[#F97316] text-white font-semibold"
                 : "bg-stone-100 text-stone-700 hover:bg-stone-200"
             }`}
           >
@@ -153,7 +165,7 @@ export default async function ProductsPage({
               href={`/products/${c.slug}`}
               className={`px-3 py-1.5 rounded-lg shrink-0 font-medium transition-colors ${
                 category === c.slug
-                  ? "bg-[#11341c] text-white"
+                  ? "bg-[#F97316] text-white font-semibold"
                   : "bg-stone-100 text-stone-700 hover:bg-stone-200"
               }`}
             >

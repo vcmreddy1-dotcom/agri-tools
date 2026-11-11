@@ -19,6 +19,8 @@ import {
   ArrowRight,
   CheckCircle2,
   Award,
+  Lock,
+  Users,
 } from "lucide-react";
 import { BUSINESS_INFO, getGeneralWhatsAppUrl } from "@/lib/whatsapp";
 import { FacebookIcon, InstagramIcon } from "@/components/icons/SocialIcons";
@@ -220,13 +222,23 @@ export default function Navbar() {
                 <InstagramIcon className="w-3.5 h-3.5" />
               </a>
             </div>
+
+            <Link
+              href="/admin"
+              className="hidden md:inline-flex items-center gap-1.5 text-[11px] font-semibold text-stone-300 hover:text-white uppercase tracking-wider transition-colors pr-2 border-r border-[#1b4d2e]"
+              title="Admin Portal Login"
+            >
+              <Lock className="w-3 h-3 text-[#F97316]" />
+              <span>PORTAL LOGIN</span>
+            </Link>
+
             <a
               href={getGeneralWhatsAppUrl()}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 bg-[#1f6133] hover:bg-[#287a41] text-white px-2.5 py-0.5 rounded-full text-[10px] sm:text-xs font-medium transition-colors"
+              className="inline-flex items-center gap-1 bg-[#F97316] hover:bg-[#EA580C] text-white px-2.5 py-0.5 rounded-full text-[10px] sm:text-xs font-semibold transition-colors"
             >
-              <MessageSquare className="w-3 h-3 text-emerald-300" />
+              <MessageSquare className="w-3 h-3 text-white" />
               <span>WhatsApp</span>
             </a>
           </div>
@@ -249,8 +261,8 @@ export default function Navbar() {
               />
             </div>
             <div>
-              <span className="block text-base sm:text-2xl font-black tracking-tight text-[#11341c] leading-none font-serif">
-                PRAKASH <span className="text-[#e26d0a]">AGRI TOOLS</span>
+              <span className="block text-base sm:text-2xl font-black tracking-tight text-[#11341c] leading-none">
+                PRAKASH <span className="text-[#F97316]">AGRI TOOLS</span>
               </span>
               <span className="block text-[9px] sm:text-[11px] tracking-wider uppercase font-bold text-stone-500 mt-0.5">
                 Powering Agriculture • Estd. 2009
@@ -262,10 +274,10 @@ export default function Navbar() {
           <nav className="hidden lg:flex items-center gap-1">
             <Link
               href="/"
-              className={`px-3.5 py-2 text-sm font-semibold rounded-lg transition-colors ${
+              className={`px-3 py-2 text-[13px] font-medium tracking-wide uppercase rounded-lg transition-colors ${
                 pathname === "/"
-                  ? "text-[#11341c] bg-stone-100/90 font-bold"
-                  : "text-stone-700 hover:text-[#11341c] hover:bg-stone-50"
+                  ? "text-[#F97316] font-semibold bg-orange-50/70"
+                  : "text-[#1F1F1F] hover:text-[#F97316] hover:bg-stone-50"
               }`}
             >
               HOME
@@ -279,17 +291,17 @@ export default function Navbar() {
             >
               <Link
                 href="/products"
-                className={`flex items-center gap-1.5 px-3.5 py-2 text-sm font-bold tracking-wide rounded-lg transition-colors ${
+                className={`flex items-center gap-1.5 px-3 py-2 text-[13px] font-medium tracking-wide uppercase rounded-lg transition-colors ${
                   pathname.startsWith("/products") || activeCategoryDropdown
-                    ? "text-[#11341c] bg-stone-100/90"
-                    : "text-stone-800 hover:text-[#11341c] hover:bg-stone-50"
+                    ? "text-[#F97316] font-semibold bg-orange-50/70"
+                    : "text-[#1F1F1F] hover:text-[#F97316] hover:bg-stone-50"
                 }`}
               >
-                <Layers className="w-4 h-4 text-[#c5a059]" />
+                <Layers className="w-4 h-4 text-[#F97316]" />
                 <span>OUR RANGE</span>
                 <ChevronDown
-                  className={`w-4 h-4 transition-transform duration-200 ${
-                    activeCategoryDropdown ? "rotate-180" : ""
+                  className={`w-3.5 h-3.5 transition-transform duration-200 ${
+                    activeCategoryDropdown ? "rotate-180 text-[#F97316]" : "text-stone-400"
                   }`}
                 />
               </Link>
@@ -298,11 +310,14 @@ export default function Navbar() {
               {activeCategoryDropdown && (
                 <div className="absolute left-1/2 -translate-x-1/2 top-full w-[960px] xl:w-[1040px] bg-white rounded-2xl shadow-2xl border border-stone-200/90 overflow-hidden animate-in fade-in slide-in-from-top-2 duration-150 z-50">
                   <div className="flex min-h-[420px]">
-                    {/* LEFT COLUMN: Main Categories List */}
-                    <div className="w-72 bg-[#f6f5f0] border-r border-stone-200 p-3 space-y-1 shrink-0">
-                      <div className="px-3 py-2 border-b border-stone-200/70 mb-2">
+                    {/* LEFT COLUMN: Main Categories List matching Landforce */}
+                    <div className="w-72 bg-[#f7f5ed] border-r border-stone-200/90 p-3 space-y-1 shrink-0">
+                      <div className="px-3 py-2 border-b border-stone-200/80 mb-2 flex items-center justify-between">
                         <span className="text-[11px] font-black uppercase tracking-wider text-stone-500">
-                          Machinery Categories
+                          OUR RANGE
+                        </span>
+                        <span className="text-[10px] text-[#F97316] font-bold">
+                          {RANGE_NAV_ITEMS.length} SECTORS
                         </span>
                       </div>
                       {RANGE_NAV_ITEMS.map((cat, idx) => {
@@ -313,16 +328,16 @@ export default function Navbar() {
                             type="button"
                             onMouseEnter={() => setSelectedCategoryIndex(idx)}
                             onClick={() => setSelectedCategoryIndex(idx)}
-                            className={`w-full flex items-center justify-between text-left px-3.5 py-2.5 rounded-xl text-xs font-black tracking-wide uppercase transition-all cursor-pointer ${
+                            className={`w-full flex items-center justify-between text-left px-3.5 py-2.5 rounded-xl text-xs uppercase tracking-wide transition-all cursor-pointer ${
                               isSelected
-                                ? "bg-[#11341c] text-white shadow-md font-black translate-x-1"
-                                : "text-stone-800 hover:bg-stone-200/70 hover:text-stone-900 font-extrabold"
+                                ? "bg-[#11341c] text-white shadow-md font-bold translate-x-1"
+                                : "text-stone-800 hover:bg-stone-200/80 hover:text-stone-900 font-semibold"
                             }`}
                           >
                             <span>{cat.name}</span>
                             <ChevronRight
                               className={`w-4 h-4 transition-transform ${
-                                isSelected ? "text-[#c5a059] translate-x-0.5" : "text-stone-400"
+                                isSelected ? "text-[#F97316] translate-x-0.5" : "text-stone-400"
                               }`}
                             />
                           </button>
@@ -336,7 +351,7 @@ export default function Navbar() {
                         {/* Subcategory Header */}
                         <div className="flex items-center justify-between border-b border-stone-100 pb-3 mb-4">
                           <div>
-                            <h3 className="text-base font-extrabold text-[#11341c] font-serif tracking-wide">
+                            <h3 className="text-base font-bold text-[#1F1F1F] uppercase tracking-wider">
                               {activeCategory.name}
                             </h3>
                             {activeCategory.tagline && (
@@ -347,22 +362,22 @@ export default function Navbar() {
                           </div>
                           <Link
                             href={`/products/${activeCategory.slug}`}
-                            className="inline-flex items-center gap-1 text-xs font-bold text-[#1f6133] hover:text-[#11341c] hover:underline shrink-0"
+                            className="inline-flex items-center gap-1 text-xs font-semibold text-[#F97316] hover:text-[#EA580C] hover:underline shrink-0"
                           >
                             <span>View All in {activeCategory.name}</span>
                             <ArrowRight className="w-3.5 h-3.5" />
                           </Link>
                         </div>
 
-                        {/* Subcategories Grid with `>` bullets matching Landforce style */}
+                        {/* Subcategories Grid with `>` bullets matching Landforce Screenshot 5 */}
                         <div className="grid grid-cols-2 xl:grid-cols-3 gap-x-6 gap-y-2.5 max-h-[300px] overflow-y-auto pr-2">
                           {activeCategory.subcategories.map((sub) => (
                             <Link
                               key={sub.slug}
                               href={`/products?category=${sub.slug}`}
-                              className="group flex items-start gap-1.5 py-1 text-xs font-bold text-stone-700 hover:text-[#11341c] transition-colors"
+                              className="group flex items-start gap-1.5 py-1 text-xs font-semibold text-[#1F1F1F] hover:text-[#F97316] transition-colors"
                             >
-                              <span className="text-stone-400 font-black group-hover:text-[#11341c] group-hover:translate-x-0.5 transition-all select-none">
+                              <span className="text-[#F97316] font-bold group-hover:translate-x-1 transition-transform select-none">
                                 &gt;
                               </span>
                               <span className="leading-snug uppercase tracking-tight group-hover:underline">
@@ -381,7 +396,7 @@ export default function Navbar() {
                         </span>
                         <Link
                           href="/products"
-                          className="font-bold text-[#11341c] hover:underline"
+                          className="font-semibold text-[#F97316] hover:underline"
                         >
                           Complete Catalogue ({RANGE_NAV_ITEMS.reduce((acc, c) => acc + c.subcategories.length, 0)} Implements) →
                         </Link>
@@ -389,38 +404,55 @@ export default function Navbar() {
                     </div>
                   </div>
 
-                  {/* BOTTOM FOOTER BAR matching Landforce Screenshot */}
-                  <div className="bg-[#f0eee6] border-t border-stone-200 px-6 py-3 flex items-center justify-between text-xs">
-                    <div className="flex items-center gap-4">
-                      <div className="inline-flex items-center gap-2 bg-[#11341c] text-white px-3.5 py-1.5 rounded-lg font-bold text-xs shadow-xs">
-                        <MapPin className="w-3.5 h-3.5 text-[#c5a059]" />
-                        <span>Showroom: LB Nagar, Hyderabad</span>
+                  {/* BOTTOM ACTION BAR matching Landforce Screenshot 4 & 5 */}
+                  <div className="bg-[#f2efe6] border-t border-stone-200 px-6 py-3 flex flex-wrap items-center justify-between gap-3 text-xs">
+                    {/* Dealer Finder Box (Red/Orange block like Landforce) */}
+                    <Link
+                      href="/contact"
+                      className="inline-flex items-center gap-2.5 bg-[#F97316] hover:bg-[#EA580C] text-white px-4 py-2 rounded-xl font-bold text-xs shadow-md transition-all group"
+                    >
+                      <MapPin className="w-4 h-4 text-white shrink-0 group-hover:scale-110 transition-transform" />
+                      <div className="text-left">
+                        <span className="block text-[11px] font-extrabold uppercase leading-none tracking-wide">
+                          Dealer & Showroom Finder
+                        </span>
+                        <span className="block text-[10px] text-orange-100 font-normal leading-none mt-1">
+                          Find your nearest showroom • Hyderabad
+                        </span>
                       </div>
-                      <a
-                        href={`tel:${BUSINESS_INFO.phoneRaw}`}
-                        className="font-bold text-stone-800 hover:text-[#11341c] hidden sm:inline"
-                      >
-                        Call: {BUSINESS_INFO.phoneDisplay}
-                      </a>
-                    </div>
+                    </Link>
 
-                    <div className="flex items-center gap-4 text-xs font-bold text-stone-700">
-                      <a
-                        href={getGeneralWhatsAppUrl(`Hello Prakash Agri Tools, I would like to enquire about ${activeCategory.name} machinery.`)}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1 text-emerald-700 hover:text-emerald-800 hover:underline"
-                      >
-                        <MessageSquare className="w-3.5 h-3.5" />
-                        <span>WhatsApp Enquiry</span>
-                      </a>
-                      <span className="text-stone-300 hidden md:inline">|</span>
+                    {/* Quick navigation links */}
+                    <div className="flex items-center gap-6 text-xs font-semibold text-stone-700">
                       <Link
                         href="/contact"
-                        className="hover:text-[#11341c] hover:underline hidden md:inline"
+                        className="inline-flex items-center gap-1.5 hover:text-[#F97316] transition-colors"
                       >
-                        Visit Showroom
+                        <Users className="w-4 h-4 text-[#F97316]" />
+                        <span>Become a Dealer</span>
                       </Link>
+
+                      <span className="text-stone-300">|</span>
+
+                      <Link
+                        href="/certifications"
+                        className="inline-flex items-center gap-1.5 hover:text-[#F97316] transition-colors"
+                      >
+                        <Award className="w-4 h-4 text-[#F97316]" />
+                        <span>Official Certifications</span>
+                      </Link>
+
+                      <span className="text-stone-300">|</span>
+
+                      <a
+                        href={getGeneralWhatsAppUrl(`Hello Prakash Agri Tools, I would like to request a quotation and catalogue for ${activeCategory.name}.`)}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 hover:text-[#F97316] transition-colors"
+                      >
+                        <MessageSquare className="w-4 h-4 text-[#F97316]" />
+                        <span>Request Quotation</span>
+                      </a>
                     </div>
                   </div>
                 </div>
@@ -429,22 +461,22 @@ export default function Navbar() {
 
             <Link
               href="/certifications"
-              className={`px-3.5 py-2 text-sm font-semibold rounded-lg transition-colors flex items-center gap-1.5 ${
+              className={`px-3 py-2 text-[13px] font-medium tracking-wide uppercase rounded-lg transition-colors flex items-center gap-1.5 ${
                 pathname === "/certifications"
-                  ? "text-[#11341c] bg-stone-100/90 font-bold"
-                  : "text-stone-700 hover:text-[#11341c] hover:bg-stone-50"
+                  ? "text-[#F97316] font-semibold bg-orange-50/70"
+                  : "text-[#1F1F1F] hover:text-[#F97316] hover:bg-stone-50"
               }`}
             >
-              <Award className="w-4 h-4 text-[#c5a059]" />
+              <Award className="w-4 h-4 text-[#F97316]" />
               <span>CERTIFICATIONS</span>
             </Link>
 
             <Link
               href="/about"
-              className={`px-3.5 py-2 text-sm font-semibold rounded-lg transition-colors ${
+              className={`px-3 py-2 text-[13px] font-medium tracking-wide uppercase rounded-lg transition-colors ${
                 pathname === "/about"
-                  ? "text-[#11341c] bg-stone-100/90 font-bold"
-                  : "text-stone-700 hover:text-[#11341c] hover:bg-stone-50"
+                  ? "text-[#F97316] font-semibold bg-orange-50/70"
+                  : "text-[#1F1F1F] hover:text-[#F97316] hover:bg-stone-50"
               }`}
             >
               ABOUT US
@@ -452,10 +484,10 @@ export default function Navbar() {
 
             <Link
               href="/contact"
-              className={`px-3.5 py-2 text-sm font-semibold rounded-lg transition-colors ${
+              className={`px-3 py-2 text-[13px] font-medium tracking-wide uppercase rounded-lg transition-colors ${
                 pathname === "/contact"
-                  ? "text-[#11341c] bg-stone-100/90 font-bold"
-                  : "text-stone-700 hover:text-[#11341c] hover:bg-stone-50"
+                  ? "text-[#F97316] font-semibold bg-orange-50/70"
+                  : "text-[#1F1F1F] hover:text-[#F97316] hover:bg-stone-50"
               }`}
             >
               CONTACT US
@@ -466,19 +498,19 @@ export default function Navbar() {
           <div className="hidden lg:flex items-center gap-3">
             <a
               href={`tel:${BUSINESS_INFO.phoneRaw}`}
-              className="inline-flex items-center gap-2 border border-stone-200 text-stone-800 hover:bg-stone-100/80 px-4 py-2.5 rounded-xl text-sm font-semibold transition-all shadow-xs"
+              className="inline-flex items-center gap-2 border border-stone-200 text-[#1F1F1F] hover:border-[#F97316] hover:text-[#F97316] hover:bg-orange-50/40 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all shadow-2xs"
             >
-              <Phone className="w-4 h-4 text-[#11341c]" />
-              <span>Call Us</span>
+              <Phone className="w-4 h-4 text-[#F97316]" />
+              <span>Call Showroom</span>
             </a>
 
             <a
               href={getGeneralWhatsAppUrl()}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-[#11341c] hover:bg-[#1f6133] text-white px-5 py-2.5 rounded-xl text-sm font-bold shadow-md shadow-emerald-950/20 hover:shadow-lg transition-all"
+              className="inline-flex items-center gap-2 bg-[#F97316] hover:bg-[#EA580C] text-white px-5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold shadow-md shadow-orange-950/20 hover:shadow-lg transition-all"
             >
-              <MessageSquare className="w-4 h-4 text-[#d4b672]" />
+              <MessageSquare className="w-4 h-4 text-white" />
               <span>WhatsApp Enquiry</span>
             </a>
           </div>

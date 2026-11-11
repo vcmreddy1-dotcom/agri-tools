@@ -130,7 +130,7 @@ export default function ProductCard({ product }: ProductCardProps) {
             )}
 
             {/* Product Name */}
-            <h3 className="text-base sm:text-lg font-bold text-stone-900 group-hover:text-[#11341c] transition-colors leading-snug line-clamp-2">
+            <h3 className="text-base sm:text-lg font-bold text-stone-900 group-hover:text-[#F97316] transition-colors leading-snug line-clamp-2">
               <Link href={`/products/${product.slug}`}>{product.name}</Link>
             </h3>
 
@@ -179,7 +179,7 @@ export default function ProductCard({ product }: ProductCardProps) {
             <div className="grid grid-cols-2 gap-2">
               <Link
                 href={`/products/${product.slug}`}
-                className="flex items-center justify-center gap-1 sm:gap-1.5 px-2.5 sm:px-3 py-2 bg-stone-100 hover:bg-stone-200 text-stone-800 text-[11px] sm:text-xs font-semibold rounded-xl transition-colors"
+                className="flex items-center justify-center gap-1 sm:gap-1.5 px-2.5 sm:px-3 py-2 bg-stone-100 hover:bg-stone-200 text-[#1F1F1F] text-[11px] sm:text-xs font-semibold rounded-xl transition-colors"
               >
                 <span>View Details</span>
                 <ArrowRight className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-stone-500" />
@@ -189,9 +189,9 @@ export default function ProductCard({ product }: ProductCardProps) {
                 href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-1 sm:gap-1.5 px-2.5 sm:px-3 py-2 bg-[#11341c] hover:bg-[#1f6133] text-white text-[11px] sm:text-xs font-bold rounded-xl shadow-xs transition-colors"
+                className="flex items-center justify-center gap-1 sm:gap-1.5 px-2.5 sm:px-3 py-2 bg-[#F97316] hover:bg-[#EA580C] text-white text-[11px] sm:text-xs font-semibold rounded-xl shadow-xs transition-colors"
               >
-                <MessageSquare className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#d4b672]" />
+                <MessageSquare className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-white" />
                 <span>WhatsApp</span>
               </a>
             </div>

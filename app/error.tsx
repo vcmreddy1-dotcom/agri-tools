@@ -34,7 +34,7 @@ export default function GlobalError({
           <span className="text-xs font-bold text-amber-700 uppercase tracking-wider">
             Connection Update
           </span>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-[#11341c] font-serif">
+          <h1 className="text-2xl sm:text-3xl font-extrabold text-[#11341c] uppercase tracking-tight">
             Unable to Load Catalogue
           </h1>
           <p className="text-xs text-stone-600 leading-relaxed">

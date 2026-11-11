@@ -238,3 +238,4 @@ export const CERTIFICATES: Certificate[] = [
     badgeColor: "bg-stone-50 text-stone-700 border-stone-200",
   },
 ];
+

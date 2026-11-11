@@ -63,12 +63,13 @@ export async function POST(req: NextRequest) {
     return response;
   } catch (err: any) {
     console.error("Login error:", err);
-    const message =
-      process.env.NODE_ENV === "development"
-        ? err?.message || "Internal server error"
-        : err?.code === "P1001"
-        ? "Database unreachable. Please check connection pooler."
-        : "Internal server error";
+    let message = "Internal server error";
+
+    if (err?.code === "P1001" || err?.message?.includes("Can't reach database server")) {
+      message = "Database server is unreachable. Please verify DATABASE_URL pooler connection in your environment settings.";
+    } else if (process.env.NODE_ENV === "development") {
+      message = err?.message || "Internal server error";
+    }
 
     return NextResponse.json(
       { error: message },

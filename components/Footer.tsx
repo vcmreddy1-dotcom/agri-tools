@@ -37,8 +37,8 @@ export default function Footer() {
               />
             </div>
             <div>
-              <h3 className="text-lg font-bold text-white font-serif">
-                Prakash <span className="text-[#f58220]">Agri Tools</span>
+              <h3 className="text-lg font-bold text-white uppercase tracking-tight">
+                Prakash <span className="text-[#F97316]">Agri Tools</span>
               </h3>
               <p className="text-xs text-stone-400">
                 Powering Agriculture • Agricultural Machinery & Spares Showroom • Estd. 2009
@@ -82,8 +82,8 @@ export default function Footer() {
                   className="w-full h-full object-contain"
                 />
               </div>
-              <span className="text-xl font-bold tracking-tight text-white font-serif">
-                PRAKASH <span className="text-[#f58220]">AGRI TOOLS</span>
+              <span className="text-xl font-bold tracking-tight text-white uppercase">
+                PRAKASH <span className="text-[#F97316]">AGRI TOOLS</span>
               </span>
             </div>
             <p className="text-sm text-stone-400 leading-relaxed max-w-md">
