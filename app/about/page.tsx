@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Tractor, ShieldCheck, Clock, MapPin, Phone, MessageSquare, ArrowRight, CheckCircle2 } from "lucide-react";
+import { Tractor, ShieldCheck, Clock, MapPin, Phone, MessageSquare, ArrowRight, CheckCircle2, Award } from "lucide-react";
 import { BUSINESS_INFO, getGeneralWhatsAppUrl } from "@/lib/whatsapp";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { FacebookIcon, InstagramIcon } from "@/components/icons/SocialIcons";
@@ -160,6 +160,31 @@ export default function AboutPage() {
             </Link>
           </div>
         </div>
+      </div>
+
+      {/* Accreditations & Certifications Spotlight */}
+      <div className="rounded-3xl bg-stone-900 text-white p-8 sm:p-12 border border-stone-800 shadow-xl flex flex-col md:flex-row items-center justify-between gap-8">
+        <div className="space-y-3 text-center md:text-left">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-[#d4b672] text-xs font-black uppercase tracking-wider">
+            <Award className="w-4 h-4 text-[#c5a059]" />
+            <span>Verified Credentials</span>
+          </div>
+          <h2 className="text-2xl sm:text-3xl font-extrabold font-serif">
+            Official Accreditations & Brand Authorizations
+          </h2>
+          <p className="text-xs sm:text-sm text-stone-300 max-w-xl">
+            Prakash Agri Tools holds formal Government MSME (Udyam) registration, Class 7 agricultural machinery trademark, AMMA India life membership (#785), and authorized dealerships with Honda, Shrachi, Jaysan, Rohitkrishi, and Nipha.
+          </p>
+        </div>
+
+        <Link
+          href="/certifications"
+          className="inline-flex items-center gap-2 bg-[#f58220] hover:bg-[#d97218] text-white px-6 py-3.5 rounded-xl text-sm font-bold shadow-lg transition-all shrink-0"
+        >
+          <Award className="w-4 h-4" />
+          <span>View All 13 Official Certificates</span>
+          <ArrowRight className="w-4 h-4" />
+        </Link>
       </div>
     </div>
   );

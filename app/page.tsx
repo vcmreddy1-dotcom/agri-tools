@@ -16,6 +16,8 @@ import {
   Layers,
   Wrench,
   Search,
+  Award,
+  FileCheck,
 } from "lucide-react";
 import { getMainCategories, getFeaturedProducts } from "@/lib/data";
 import { BUSINESS_INFO, getGeneralWhatsAppUrl } from "@/lib/whatsapp";
@@ -385,6 +387,188 @@ export default async function HomePage() {
             <p className="text-xs text-stone-600 mt-2 leading-relaxed">
               Never stay stalled in harvest season. We stock and source genuine rotavator blades, seed cups, bearings, belts, and spray guns with direct fitment support.
             </p>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION: VERIFIED CERTIFICATIONS & DEALERSHIP AUTHORIZATIONS */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="bg-stone-900 text-white rounded-3xl p-8 sm:p-12 lg:p-16 border border-stone-800 shadow-2xl relative overflow-hidden">
+          <div className="absolute top-0 right-0 -translate-y-1/3 translate-x-1/3 w-80 h-80 bg-emerald-600/10 rounded-full blur-3xl pointer-events-none" />
+
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10 relative z-10">
+            <div className="space-y-2 max-w-2xl">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/15 text-[#d4b672] text-xs font-black uppercase tracking-wider">
+                <ShieldCheck className="w-4 h-4 text-[#c5a059]" />
+                <span>Verified Industry Accreditations</span>
+              </div>
+              <h2 className="text-2xl sm:text-4xl font-extrabold font-serif text-white">
+                Official Certifications & Brand Authorizations
+              </h2>
+              <p className="text-sm text-stone-300 leading-relaxed">
+                Backed by Government MSME registration, AMMA India life membership, and direct OEM dealership appointments. We guarantee 100% genuine machinery with factory warranty support.
+              </p>
+            </div>
+
+            <Link
+              href="/certifications"
+              className="inline-flex items-center gap-2 bg-[#f58220] hover:bg-[#d97218] text-white px-5 py-3 rounded-xl text-sm font-bold shadow-lg transition-all shrink-0"
+            >
+              <Award className="w-4 h-4" />
+              <span>View All 13 Official Certificates</span>
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
+
+          {/* 4 Spotlight Certificate Cards */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 relative z-10">
+            {/* Card 1: MSME Udyam */}
+            <Link
+              href="/certifications"
+              className="group bg-stone-800/90 hover:bg-stone-800 rounded-2xl p-5 border border-stone-700/80 hover:border-emerald-500/50 transition-all duration-300 flex flex-col justify-between"
+            >
+              <div className="space-y-3">
+                <div className="relative aspect-4/3 rounded-xl overflow-hidden bg-white/5 border border-stone-700">
+                  <Image
+                    src="/certificates/udyam-msme-registration-certificate.webp"
+                    alt="Udyam MSME Registration"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 25vw"
+                    className="object-contain p-2 group-hover:scale-105 transition-transform"
+                  />
+                </div>
+                <div>
+                  <span className="text-[10px] font-black uppercase tracking-wider text-[#d4b672] block">
+                    Government of India
+                  </span>
+                  <h3 className="font-bold text-white text-sm mt-1 font-serif group-hover:text-emerald-400 transition-colors">
+                    Udyam MSME Registration
+                  </h3>
+                  <p className="text-xs text-stone-400 mt-1 font-mono">
+                    UDYAM-TS-09-0011074
+                  </p>
+                </div>
+              </div>
+              <span className="text-xs text-emerald-400 font-semibold mt-3 flex items-center gap-1">
+                <span>View Full Document</span>
+                <span>→</span>
+              </span>
+            </Link>
+
+            {/* Card 2: AMMA India */}
+            <Link
+              href="/certifications"
+              className="group bg-stone-800/90 hover:bg-stone-800 rounded-2xl p-5 border border-stone-700/80 hover:border-emerald-500/50 transition-all duration-300 flex flex-col justify-between"
+            >
+              <div className="space-y-3">
+                <div className="relative aspect-4/3 rounded-xl overflow-hidden bg-white/5 border border-stone-700">
+                  <Image
+                    src="/certificates/amma-india-life-member-certificate.webp"
+                    alt="AMMA India Life Member"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 25vw"
+                    className="object-contain p-2 group-hover:scale-105 transition-transform"
+                  />
+                </div>
+                <div>
+                  <span className="text-[10px] font-black uppercase tracking-wider text-[#d4b672] block">
+                    Apex Manufacturers Body
+                  </span>
+                  <h3 className="font-bold text-white text-sm mt-1 font-serif group-hover:text-emerald-400 transition-colors">
+                    AMMA India Life Member
+                  </h3>
+                  <p className="text-xs text-stone-400 mt-1 font-mono">
+                    Member No: LM-785
+                  </p>
+                </div>
+              </div>
+              <span className="text-xs text-emerald-400 font-semibold mt-3 flex items-center gap-1">
+                <span>View Full Document</span>
+                <span>→</span>
+              </span>
+            </Link>
+
+            {/* Card 3: Honda Power Products */}
+            <Link
+              href="/certifications"
+              className="group bg-stone-800/90 hover:bg-stone-800 rounded-2xl p-5 border border-stone-700/80 hover:border-emerald-500/50 transition-all duration-300 flex flex-col justify-between"
+            >
+              <div className="space-y-3">
+                <div className="relative aspect-4/3 rounded-xl overflow-hidden bg-white/5 border border-stone-700">
+                  <Image
+                    src="/certificates/honda-power-products-dealership-certificate.webp"
+                    alt="Honda Power Products Authorization"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 25vw"
+                    className="object-contain p-2 group-hover:scale-105 transition-transform"
+                  />
+                </div>
+                <div>
+                  <span className="text-[10px] font-black uppercase tracking-wider text-red-400 block">
+                    Authorized OEM Dealership
+                  </span>
+                  <h3 className="font-bold text-white text-sm mt-1 font-serif group-hover:text-emerald-400 transition-colors">
+                    Honda India Power Products
+                  </h3>
+                  <p className="text-xs text-stone-400 mt-1">
+                    Engines, Tillers & Sprayers
+                  </p>
+                </div>
+              </div>
+              <span className="text-xs text-emerald-400 font-semibold mt-3 flex items-center gap-1">
+                <span>View Full Document</span>
+                <span>→</span>
+              </span>
+            </Link>
+
+            {/* Card 4: Shrachi / BTL EPC */}
+            <Link
+              href="/certifications"
+              className="group bg-stone-800/90 hover:bg-stone-800 rounded-2xl p-5 border border-stone-700/80 hover:border-emerald-500/50 transition-all duration-300 flex flex-col justify-between"
+            >
+              <div className="space-y-3">
+                <div className="relative aspect-4/3 rounded-xl overflow-hidden bg-white/5 border border-stone-700">
+                  <Image
+                    src="/certificates/shrachi-btl-epc-dealership-certificate.webp"
+                    alt="Shrachi Agrimech Dealership"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 25vw"
+                    className="object-contain p-2 group-hover:scale-105 transition-transform"
+                  />
+                </div>
+                <div>
+                  <span className="text-[10px] font-black uppercase tracking-wider text-emerald-400 block">
+                    ISO 9001:2015 Certified
+                  </span>
+                  <h3 className="font-bold text-white text-sm mt-1 font-serif group-hover:text-emerald-400 transition-colors">
+                    Shrachi Agrimech & BTL EPC
+                  </h3>
+                  <p className="text-xs text-stone-400 mt-1">
+                    Power Tillers & Harvesters
+                  </p>
+                </div>
+              </div>
+              <span className="text-xs text-emerald-400 font-semibold mt-3 flex items-center gap-1">
+                <span>View Full Document</span>
+                <span>→</span>
+              </span>
+            </Link>
+          </div>
+
+          {/* Brand Partner Ticker / Pill Strip */}
+          <div className="mt-10 pt-6 border-t border-stone-800 flex flex-wrap items-center justify-between gap-4 text-xs text-stone-400 relative z-10">
+            <span className="font-bold uppercase tracking-wider text-stone-300">
+              Authorized Partner Brands:
+            </span>
+            <div className="flex flex-wrap items-center gap-3 font-semibold text-stone-300">
+              <span className="px-3 py-1 rounded-lg bg-stone-800 border border-stone-700">HONDA</span>
+              <span className="px-3 py-1 rounded-lg bg-stone-800 border border-stone-700">SHRACHI</span>
+              <span className="px-3 py-1 rounded-lg bg-stone-800 border border-stone-700">JAYSAN</span>
+              <span className="px-3 py-1 rounded-lg bg-stone-800 border border-stone-700">ROHITKRISHI</span>
+              <span className="px-3 py-1 rounded-lg bg-stone-800 border border-stone-700">NIPHA ONEHORN</span>
+              <span className="px-3 py-1 rounded-lg bg-stone-800 border border-stone-700">ENOCHS</span>
+              <span className="px-3 py-1 rounded-lg bg-stone-800 border border-stone-700">ANNAPURNA</span>
+            </div>
           </div>
         </div>
       </section>

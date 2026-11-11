@@ -18,6 +18,7 @@ import {
   Sparkles,
   ArrowRight,
   CheckCircle2,
+  Award,
 } from "lucide-react";
 import { BUSINESS_INFO, getGeneralWhatsAppUrl } from "@/lib/whatsapp";
 import { FacebookIcon, InstagramIcon } from "@/components/icons/SocialIcons";
@@ -427,6 +428,18 @@ export default function Navbar() {
             </div>
 
             <Link
+              href="/certifications"
+              className={`px-3.5 py-2 text-sm font-semibold rounded-lg transition-colors flex items-center gap-1.5 ${
+                pathname === "/certifications"
+                  ? "text-[#11341c] bg-stone-100/90 font-bold"
+                  : "text-stone-700 hover:text-[#11341c] hover:bg-stone-50"
+              }`}
+            >
+              <Award className="w-4 h-4 text-[#c5a059]" />
+              <span>CERTIFICATIONS</span>
+            </Link>
+
+            <Link
               href="/about"
               className={`px-3.5 py-2 text-sm font-semibold rounded-lg transition-colors ${
                 pathname === "/about"
@@ -569,6 +582,15 @@ export default function Navbar() {
               })}
             </div>
           </div>
+
+          <Link
+            href="/certifications"
+            onClick={() => setMobileMenuOpen(false)}
+            className="flex items-center gap-2 px-3 py-2.5 rounded-lg text-base font-semibold text-stone-900 hover:bg-stone-50"
+          >
+            <Award className="w-4 h-4 text-[#c5a059]" />
+            <span>CERTIFICATIONS</span>
+          </Link>
 
           <Link
             href="/about"

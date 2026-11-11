@@ -4,7 +4,7 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Tractor, Phone, MapPin, MessageSquare, ShieldCheck, Mail } from "lucide-react";
+import { Tractor, Phone, MapPin, MessageSquare, ShieldCheck, Mail, Award } from "lucide-react";
 import { BUSINESS_INFO, getGeneralWhatsAppUrl } from "@/lib/whatsapp";
 import { FacebookIcon, InstagramIcon } from "@/components/icons/SocialIcons";
 
@@ -71,7 +71,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-12">
           {/* Col 1: About */}
-          <div className="lg:col-span-2 space-y-4">
+          <div className="lg:col-span-1 md:col-span-2 space-y-4">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-xl bg-white p-1 flex items-center justify-center shrink-0 shadow-sm border border-stone-200">
                 <Image
@@ -224,7 +224,62 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Col 4: Quick Links */}
+          {/* Col 4: Official Certifications */}
+          <div className="space-y-3">
+            <h4 className="text-sm font-bold text-white uppercase tracking-wider text-[#d4b672] flex items-center gap-1.5">
+              <Award className="w-4 h-4 text-[#c5a059]" />
+              <span>Certifications</span>
+            </h4>
+            <ul className="space-y-2 text-xs">
+              <li>
+                <Link
+                  href="/certifications"
+                  className="hover:text-emerald-400 transition-colors text-stone-300 font-semibold block"
+                >
+                  Govt. MSME (Udyam)
+                </Link>
+                <span className="text-[10px] text-stone-500">UDYAM-TS-09-0011074</span>
+              </li>
+              <li>
+                <Link
+                  href="/certifications"
+                  className="hover:text-emerald-400 transition-colors text-stone-300 font-semibold block"
+                >
+                  AMMA India Life Member
+                </Link>
+                <span className="text-[10px] text-stone-500">National Member #785</span>
+              </li>
+              <li>
+                <Link
+                  href="/certifications"
+                  className="hover:text-emerald-400 transition-colors text-stone-300 font-semibold block"
+                >
+                  Trade Mark Reg. (Class 7)
+                </Link>
+                <span className="text-[10px] text-stone-500">Reg No: 5383210</span>
+              </li>
+              <li>
+                <Link
+                  href="/certifications"
+                  className="hover:text-emerald-400 transition-colors text-stone-300 font-semibold block"
+                >
+                  OEM Dealerships
+                </Link>
+                <span className="text-[10px] text-stone-500">Honda, Shrachi, Jaysan, Rohitkrishi</span>
+              </li>
+              <li className="pt-1">
+                <Link
+                  href="/certifications"
+                  className="inline-flex items-center gap-1 text-xs font-bold text-[#f58220] hover:text-[#d97218] transition-colors"
+                >
+                  <span>View All 13 Proofs</span>
+                  <span>→</span>
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Col 5: Quick Links */}
           <div className="space-y-3">
             <h4 className="text-sm font-bold text-white uppercase tracking-wider text-[#d4b672]">
               Quick Links
@@ -243,6 +298,11 @@ export default function Footer() {
               <li>
                 <Link href="/about" className="hover:text-emerald-400 transition-colors">
                   About Our Business
+                </Link>
+              </li>
+              <li>
+                <Link href="/certifications" className="hover:text-emerald-400 transition-colors">
+                  Certifications & Proofs
                 </Link>
               </li>
               <li>
