@@ -4,7 +4,7 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Tractor, Phone, MapPin, MessageSquare, ShieldCheck, Mail, Award } from "lucide-react";
+import { Tractor, Phone, MapPin, MessageSquare, ShieldCheck, Mail, Award, Download } from "lucide-react";
 import { BUSINESS_INFO, getGeneralWhatsAppUrl } from "@/lib/whatsapp";
 import { FacebookIcon, InstagramIcon } from "@/components/icons/SocialIcons";
 
@@ -132,17 +132,37 @@ export default function Footer() {
             </p>
             <div className="pt-2 space-y-2 text-xs text-stone-400">
               <div className="flex items-start gap-2">
-                <MapPin className="w-4 h-4 text-[#c5a059] shrink-0 mt-0.5" />
-                <span>LB Nagar, Hyderabad, Telangana, India</span>
+                <MapPin className="w-4 h-4 text-[#F97316] shrink-0 mt-0.5" />
+                <span>{BUSINESS_INFO.address}</span>
               </div>
               <div className="flex items-center gap-2">
-                <Phone className="w-4 h-4 text-[#c5a059] shrink-0" />
-                <span>+91 96660 39444</span>
+                <Phone className="w-4 h-4 text-[#F97316] shrink-0" />
+                <a href={`tel:${BUSINESS_INFO.phoneRaw}`} className="hover:text-white transition-colors">
+                  {BUSINESS_INFO.phoneDisplay}
+                </a>
+                <span className="text-stone-600">/</span>
+                <a href={`tel:${BUSINESS_INFO.secondaryPhoneRaw}`} className="hover:text-white transition-colors">
+                  {BUSINESS_INFO.secondaryPhone}
+                </a>
               </div>
               <div className="flex items-center gap-2">
-                <ShieldCheck className="w-4 h-4 text-[#c5a059] shrink-0" />
-                <span>Registered Agricultural Equipment Supplier</span>
+                <Mail className="w-4 h-4 text-[#F97316] shrink-0" />
+                <a href={`mailto:${BUSINESS_INFO.email}`} className="hover:text-white transition-colors">
+                  {BUSINESS_INFO.email}
+                </a>
               </div>
+            </div>
+
+            {/* Download Official Visiting Card */}
+            <div className="pt-2">
+              <a
+                href="/prakash-agri-tools-visiting-card.jpg"
+                download="Prakash-Agri-Tools-Visiting-Card.jpg"
+                className="group inline-flex items-center gap-2 bg-stone-800 hover:bg-[#F97316] text-stone-200 hover:text-white px-3.5 py-2 rounded-xl text-xs font-bold transition-all border border-stone-700 shadow-xs"
+              >
+                <Download className="w-3.5 h-3.5 text-[#F97316] group-hover:text-white transition-colors" />
+                <span>Download Visiting Card</span>
+              </a>
             </div>
 
             {/* Social Links */}

@@ -4,6 +4,7 @@ import Image from "next/image";
 import { Tractor, ShieldCheck, Clock, MapPin, Phone, MessageSquare, ArrowRight, CheckCircle2, Award } from "lucide-react";
 import { BUSINESS_INFO, getGeneralWhatsAppUrl } from "@/lib/whatsapp";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import VisitingCard from "@/components/VisitingCard";
 import { FacebookIcon, InstagramIcon } from "@/components/icons/SocialIcons";
 
 export const metadata = {
@@ -71,8 +72,11 @@ export default function AboutPage() {
           </div>
         </div>
 
-        {/* Right Info Box */}
-        <div className="lg:col-span-5 bg-white p-8 rounded-3xl border border-stone-200 shadow-md space-y-6">
+        {/* Right Info Box & Visiting Card */}
+        <div className="lg:col-span-5 space-y-6">
+          <VisitingCard />
+
+          <div className="bg-white p-8 rounded-3xl border border-stone-200 shadow-md space-y-6">
           <div className="w-16 h-16 rounded-2xl bg-white p-1.5 shadow-md border border-stone-200 flex items-center justify-center">
             <Image
               src="/logo-icon.png"
@@ -160,6 +164,7 @@ export default function AboutPage() {
             </Link>
           </div>
         </div>
+      </div>
       </div>
 
       {/* Accreditations & Certifications Spotlight */}

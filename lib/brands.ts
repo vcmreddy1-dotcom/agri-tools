@@ -99,3 +99,4 @@ export const SECONDARY_PARTNERS = [
   { name: "ANNAPURNA", category: "Agricultural Equipment" },
   { name: "AMMA INDIA", category: "Manufacturers Association Member" },
 ];
+

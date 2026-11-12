@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import { BUSINESS_INFO, getGeneralWhatsAppUrl } from "@/lib/whatsapp";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import VisitingCard from "@/components/VisitingCard";
 import { FacebookIcon, InstagramIcon } from "@/components/icons/SocialIcons";
 
 export default function ContactPage() {
@@ -205,8 +206,11 @@ export default function ContactPage() {
           )}
         </div>
 
-        {/* Right: Verified Business Information */}
+        {/* Right: Verified Business Information & Visiting Card */}
         <div className="lg:col-span-5 space-y-6">
+          {/* Downloadable Official Visiting Card */}
+          <VisitingCard />
+
           <div className="bg-white p-8 rounded-3xl border border-stone-200 shadow-sm space-y-6">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-xl bg-white p-1 flex items-center justify-center shrink-0 shadow-sm border border-stone-200">
@@ -228,7 +232,7 @@ export default function ContactPage() {
                 <MapPin className="w-5 h-5 text-[#c5a059] shrink-0 mt-0.5" />
                 <div>
                   <span className="font-bold block text-stone-900">Showroom Address</span>
-                  <span>LB Nagar, Hyderabad, Telangana, India</span>
+                  <span>{BUSINESS_INFO.address}</span>
                   <span className="block text-xs text-stone-500 mt-0.5">
                     (Visit during business hours for live inspection)
                   </span>
@@ -238,10 +242,15 @@ export default function ContactPage() {
               <div className="flex items-start gap-3">
                 <Phone className="w-5 h-5 text-[#c5a059] shrink-0 mt-0.5" />
                 <div>
-                  <span className="font-bold block text-stone-900">Telephone</span>
-                  <a href={`tel:${BUSINESS_INFO.phoneRaw}`} className="text-[#11341c] font-semibold hover:underline">
-                    {BUSINESS_INFO.phoneDisplay}
-                  </a>
+                  <span className="font-bold block text-stone-900">Telephone / Mobile</span>
+                  <div className="space-y-0.5">
+                    <a href={`tel:${BUSINESS_INFO.phoneRaw}`} className="text-[#11341c] font-bold block hover:underline">
+                      {BUSINESS_INFO.phoneDisplay}
+                    </a>
+                    <a href={`tel:${BUSINESS_INFO.secondaryPhoneRaw}`} className="text-stone-600 font-semibold block text-xs hover:underline">
+                      {BUSINESS_INFO.secondaryPhone}
+                    </a>
+                  </div>
                 </div>
               </div>
 

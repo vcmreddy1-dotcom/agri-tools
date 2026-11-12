@@ -23,6 +23,7 @@ import { getMainCategories, getFeaturedProducts } from "@/lib/data";
 import { BUSINESS_INFO, getGeneralWhatsAppUrl } from "@/lib/whatsapp";
 import ProductCard from "@/components/ProductCard";
 import HeroVideo from "@/components/HeroVideo";
+import VisitingCard from "@/components/VisitingCard";
 import { BRAND_PARTNERS, SECONDARY_PARTNERS } from "@/lib/brands";
 
 export const dynamic = "force-dynamic";
@@ -404,139 +405,104 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* SECTION: AUTHORIZED OEM BRANDS & MANUFACTURERS */}
-      <section id="brands" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-24">
-        <div className="bg-stone-900 text-white rounded-3xl p-8 sm:p-12 lg:p-16 border border-stone-800 shadow-2xl relative overflow-hidden">
-          <div className="absolute top-0 right-0 -translate-y-1/3 translate-x-1/3 w-80 h-80 bg-orange-500/10 rounded-full blur-3xl pointer-events-none" />
-          <div className="absolute bottom-0 left-0 translate-y-1/3 -translate-x-1/3 w-80 h-80 bg-emerald-600/10 rounded-full blur-3xl pointer-events-none" />
-
+      {/* SECTION: OUR BRANDS (Matching Agrimart Reference) */}
+      <section id="brands" className="bg-[#f5f6f8] border-y border-stone-200/70 py-16 sm:py-24 scroll-mt-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Header */}
-          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10 relative z-10">
-            <div className="space-y-2 max-w-2xl">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/15 text-[#F97316] text-xs font-bold uppercase tracking-wider">
-                <ShieldCheck className="w-4 h-4 text-[#F97316]" />
-                <span>Authorized Dealerships & OEM Partners</span>
-              </div>
-              <h2 className="text-2xl sm:text-4xl font-bold uppercase tracking-tight text-white leading-[1.15]">
-                WORLD-CLASS BRANDS <span className="text-[#F97316]">&amp; MANUFACTURERS</span>
-              </h2>
-              <p className="text-sm text-stone-300 leading-[1.6] font-normal">
-                Direct authorized sales, genuine warranty, and factory spare parts for industry-leading agricultural machinery brands trusted across India and worldwide.
-              </p>
+          <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#eef7ee] border border-[#d2ecd2] text-[#1e7e34] text-[11px] sm:text-xs font-bold tracking-wider uppercase mb-3.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#1e7e34]" />
+              <span>AUTHORIZED GLOBAL &amp; IN-HOUSE BRANDS</span>
             </div>
 
-            <div className="flex flex-wrap items-center gap-3">
-              <Link
-                href="/brands"
-                className="inline-flex items-center gap-2 bg-[#F97316] hover:bg-[#EA580C] text-white px-5 py-3 rounded-xl text-xs sm:text-sm font-semibold shadow-lg transition-all shrink-0 uppercase tracking-wider"
-              >
-                <span>View Brand Directory</span>
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-              <Link
-                href="/certifications"
-                className="inline-flex items-center gap-2 bg-stone-800 hover:bg-stone-700 text-stone-200 border border-stone-700 px-4 py-3 rounded-xl text-xs sm:text-sm font-semibold transition-all shrink-0 uppercase tracking-wider"
-              >
-                <Award className="w-4 h-4 text-[#F97316]" />
-                <span>Certifications</span>
-              </Link>
-            </div>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#1F1F1F] tracking-tight">
+              Our Brands
+            </h2>
+
+            <p className="text-sm sm:text-base text-stone-600 mt-3 leading-relaxed font-normal">
+              Prakash Agri Tools works with world-class manufacturers, experienced engineers, and trusted in-house brands to improve productivity for farmers and profitability for our partners.
+            </p>
           </div>
 
-          {/* 6 Clean White Brand Cards Matching Reference Card */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 relative z-10">
+          {/* 6 Clean Brand Names (No photos, pure typography) */}
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 max-w-5xl mx-auto items-stretch">
             {BRAND_PARTNERS.map((brand) => (
-              <div
+              <Link
                 key={brand.id}
-                className="group bg-white rounded-2xl p-6 border border-stone-200 hover:border-[#F97316] transition-all duration-300 shadow-lg hover:shadow-2xl flex flex-col justify-between text-stone-900"
+                href={`/products?search=${encodeURIComponent(brand.name)}`}
+                className="group flex flex-col items-center justify-center p-6 sm:p-8 rounded-2xl bg-white hover:bg-stone-50 border border-stone-200/80 hover:border-[#F97316] shadow-2xs hover:shadow-md transition-all duration-300 text-center"
               >
-                <div>
-                  {/* Brand Logo Container (clean white card look) */}
-                  <div className="relative h-28 w-full rounded-xl bg-white border border-stone-100 flex items-center justify-center p-3 mb-4 group-hover:scale-[1.02] transition-transform duration-300">
-                    <Image
-                      src={brand.logo}
-                      alt={brand.name}
-                      width={240}
-                      height={120}
-                      className="max-h-20 w-auto object-contain mx-auto"
-                    />
-                  </div>
-
-                  {/* Badge & Title */}
-                  <div className="space-y-1.5">
-                    <div className="flex items-center justify-between gap-2">
-                      <h3 className="font-bold text-lg text-stone-900 tracking-tight">
-                        {brand.name}
-                      </h3>
-                      <span className={`text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full border ${brand.badgeColor}`}>
-                        {brand.badge}
-                      </span>
-                    </div>
-                    <p className="text-xs font-semibold text-[#F97316] uppercase tracking-wide">
-                      {brand.tagline}
-                    </p>
-                    <p className="text-xs text-stone-600 line-clamp-2 leading-relaxed pt-1">
-                      {brand.description}
-                    </p>
-                  </div>
-
-                  {/* Machinery Highlights */}
-                  <div className="mt-4 pt-3 border-t border-stone-100">
-                    <span className="text-[10px] font-bold text-stone-400 uppercase tracking-wider block mb-2">
-                      Key Equipment Range:
-                    </span>
-                    <div className="flex flex-wrap gap-1.5">
-                      {brand.equipment.slice(0, 3).map((item, idx) => (
-                        <span
-                          key={idx}
-                          className="text-[11px] font-medium bg-stone-100 text-stone-700 px-2 py-0.5 rounded-md"
-                        >
-                          {item}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-
-                {/* Footer Action */}
-                <div className="mt-5 pt-3 border-t border-stone-100 flex items-center justify-between">
-                  <Link
-                    href={`/products?search=${encodeURIComponent(brand.name)}`}
-                    className="text-xs font-bold text-[#F97316] hover:text-[#EA580C] inline-flex items-center gap-1 group-hover:translate-x-0.5 transition-transform uppercase tracking-wider"
-                  >
-                    <span>Explore Products</span>
-                    <span>→</span>
-                  </Link>
-                  <a
-                    href={getGeneralWhatsAppUrl(`Hello Prakash Agri Tools, I am enquiring about ${brand.name} machinery and spare parts pricing.`)}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-[11px] font-semibold text-emerald-700 hover:text-emerald-800 bg-emerald-50 hover:bg-emerald-100 px-2.5 py-1 rounded-lg border border-emerald-200 transition-colors inline-flex items-center gap-1"
-                  >
-                    <MessageSquare className="w-3 h-3" />
-                    <span>WhatsApp</span>
-                  </a>
-                </div>
-              </div>
+                <span className="text-xl sm:text-2xl font-black text-stone-900 group-hover:text-[#F97316] transition-colors uppercase tracking-tight">
+                  {brand.name}
+                </span>
+                <span className="text-xs font-bold text-[#F97316] uppercase tracking-wide mt-2">
+                  {brand.tagline}
+                </span>
+                <span className="text-[11px] sm:text-xs text-stone-500 font-medium mt-1">
+                  {brand.specialization}
+                </span>
+              </Link>
             ))}
           </div>
 
-          {/* Secondary Partners Ticker */}
-          <div className="mt-10 pt-6 border-t border-stone-800 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 text-xs text-stone-400 relative z-10">
-            <div className="flex items-center gap-2">
-              <span className="font-bold uppercase tracking-wider text-stone-300">
-                Additional Associated Brands:
+          {/* Secondary Associated Partners strip */}
+          <div className="mt-14 pt-8 border-t border-stone-200/80 flex flex-wrap items-center justify-center gap-3 text-xs text-stone-500 text-center">
+            <span className="font-semibold text-stone-700 uppercase tracking-wider text-[11px]">
+              Additional Associated Partners:
+            </span>
+            {SECONDARY_PARTNERS.map((p) => (
+              <span
+                key={p.name}
+                className="px-3 py-1 rounded-full bg-white border border-stone-200 text-stone-700 text-xs font-medium shadow-2xs"
+              >
+                {p.name}
               </span>
+            ))}
+            <Link
+              href="/brands"
+              className="text-[#F97316] hover:text-[#EA580C] font-bold text-xs uppercase tracking-wider ml-1 inline-flex items-center gap-1"
+            >
+              <span>View Brand Directory →</span>
+            </Link>
+          </div>
+
+          {/* Top Picks continuation (Matching Agrimart reference in screenshot) */}
+          <div className="mt-20 pt-16 border-t border-stone-200/90 text-center">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#eef7ee] border border-[#d2ecd2] text-[#1e7e34] text-[11px] sm:text-xs font-bold tracking-wider uppercase mb-3.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#1e7e34]" />
+              <span>AUTHORIZED BRAND PORTFOLIO</span>
             </div>
-            <div className="flex flex-wrap items-center gap-2 font-semibold text-stone-300">
-              {SECONDARY_PARTNERS.map((p) => (
-                <span
-                  key={p.name}
-                  className="px-3 py-1 rounded-lg bg-stone-800/90 border border-stone-700 text-stone-200 text-xs"
-                >
-                  {p.name}
-                </span>
+
+            <h3 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#1F1F1F] tracking-tight">
+              Prakash&apos;s Top Picks
+            </h3>
+
+            <p className="text-sm sm:text-base text-stone-600 max-w-2xl mx-auto mt-2 leading-relaxed font-normal">
+              Explore top agricultural machinery and high-efficiency equipment with us
+            </p>
+
+            {/* Top Picks Products Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-10 text-left">
+              {featuredProducts.slice(0, 4).map((prod) => (
+                <ProductCard key={prod.id} product={prod} />
               ))}
+            </div>
+
+            <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
+              <Link
+                href="/products"
+                className="inline-flex items-center gap-2 bg-[#F97316] hover:bg-[#EA580C] text-white px-6 py-3 rounded-xl text-xs sm:text-sm font-bold shadow-md transition-all uppercase tracking-wider"
+              >
+                <span>Browse All Equipment</span>
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+              <Link
+                href="/brands"
+                className="inline-flex items-center gap-2 bg-white hover:bg-stone-50 text-stone-800 border border-stone-200 px-6 py-3 rounded-xl text-xs sm:text-sm font-bold shadow-2xs transition-all uppercase tracking-wider"
+              >
+                <span>Brand Portfolio &amp; Warranty</span>
+                <ArrowRight className="w-4 h-4" />
+              </Link>
             </div>
           </div>
         </div>
@@ -659,25 +625,8 @@ export default async function HomePage() {
             </div>
           </div>
 
-          <div className="lg:col-span-5 bg-stone-50 rounded-2xl p-6 border border-stone-200 space-y-4 text-center">
-            <div className="w-14 h-14 rounded-2xl bg-[#11341c] text-[#F97316] flex items-center justify-center mx-auto shadow-md">
-              <Tractor className="w-8 h-8" />
-            </div>
-            <h3 className="text-lg font-bold text-[#1F1F1F] uppercase tracking-tight">
-              Agricultural Guidance
-            </h3>
-            <p className="text-xs text-stone-600 leading-relaxed">
-              Unsure which rotavator width fits your tractor, or what seed drill tyne spacing suits your pulses? Call or WhatsApp us directly.
-            </p>
-            <div className="pt-2">
-              <a
-                href={`tel:${BUSINESS_INFO.phoneRaw}`}
-                className="w-full inline-flex items-center justify-center gap-2 bg-[#F97316] text-white py-3.5 px-4 rounded-xl font-semibold text-xs sm:text-sm hover:bg-[#EA580C] transition-colors uppercase tracking-wider"
-              >
-                <Phone className="w-4 h-4 text-white" />
-                <span>Call +91 96660 39444</span>
-              </a>
-            </div>
+          <div className="lg:col-span-5">
+            <VisitingCard />
           </div>
         </div>
       </section>
