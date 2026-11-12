@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { prisma } from "@/lib/db";
-import { getProducts, getMainCategories } from "@/lib/data";
+import { getProducts, getMainCategories, getCategoryBySlug } from "@/lib/data";
 import ProductCard from "@/components/ProductCard";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { Search, Filter, Layers, CheckCircle2, AlertCircle } from "lucide-react";
@@ -38,10 +38,7 @@ export default async function ProductsPage({
   let activeCategoryName = "All Products";
   if (category) {
     try {
-      const matched = await prisma.category.findUnique({
-        where: { slug: category },
-        select: { name: true, parentCategory: { select: { name: true } } },
-      });
+      const matched = await getCategoryBySlug(category);
       if (matched) {
         activeCategoryName = matched.parentCategory
           ? `${matched.parentCategory.name} > ${matched.name}`

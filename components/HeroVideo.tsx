@@ -26,7 +26,7 @@ export default function HeroVideo() {
       loop
       muted
       playsInline
-      preload="auto"
+      preload="metadata"
       className="w-full h-full object-cover object-center bg-stone-900"
     >
       <source src="/videos/hero-machinery.mp4" type="video/mp4" />

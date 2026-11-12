@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/db";
+import { clearDataCache } from "@/lib/data";
 
 function generateSlug(text: string): string {
   return text
@@ -144,6 +145,7 @@ export async function POST(req: NextRequest) {
       }
     }
 
+    clearDataCache();
     return NextResponse.json({ success: true, product });
   } catch (err) {
     console.error("Create product error:", err);

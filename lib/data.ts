@@ -1,4 +1,21 @@
 import { prisma } from "@/lib/db";
+import { Prisma } from "@prisma/client";
+
+export type CategoryDetail = Prisma.CategoryGetPayload<{
+  include: {
+    parentCategory: true;
+    subcategories: {
+      where: { isActive: true };
+      orderBy: { displayOrder: "asc" };
+      include: {
+        _count: { select: { products: { where: { published: true } } } };
+      };
+    };
+    _count: {
+      select: { products: { where: { published: true } } };
+    };
+  };
+}>;
 
 export interface CategoryWithSubcategories {
   id: string;
@@ -193,7 +210,41 @@ const FALLBACK_CATEGORIES: CategoryWithSubcategories[] = [
   },
 ];
 
+// In-Memory Fast Cache with TTL to eliminate Supabase round-trip latency on repeated page visits
+interface CacheEntry<T> {
+  data: T;
+  timestamp: number;
+}
+
+const memoryCache = new Map<string, CacheEntry<unknown>>();
+const CACHE_TTL_MS = 60 * 1000; // 60 seconds TTL
+
+function getFromCache<T>(key: string): T | null {
+  const entry = memoryCache.get(key);
+  if (!entry) return null;
+  if (Date.now() - entry.timestamp > CACHE_TTL_MS) {
+    memoryCache.delete(key);
+    return null;
+  }
+  return entry.data as T;
+}
+
+function setToCache<T>(key: string, data: T): void {
+  if (memoryCache.size > 500) {
+    const oldestKey = memoryCache.keys().next().value;
+    if (oldestKey) memoryCache.delete(oldestKey);
+  }
+  memoryCache.set(key, { data, timestamp: Date.now() });
+}
+
+export function clearDataCache(): void {
+  memoryCache.clear();
+}
+
 export async function getMainCategories(): Promise<CategoryWithSubcategories[]> {
+  const cached = getFromCache<CategoryWithSubcategories[]>("main_categories");
+  if (cached) return cached;
+
   try {
     const results = await prisma.category.findMany({
       where: {
@@ -216,7 +267,9 @@ export async function getMainCategories(): Promise<CategoryWithSubcategories[]> 
     });
 
     if (results && results.length > 0) {
-      return results as unknown as CategoryWithSubcategories[];
+      const data = results as unknown as CategoryWithSubcategories[];
+      setToCache("main_categories", data);
+      return data;
     }
     return FALLBACK_CATEGORIES;
   } catch (error) {
@@ -225,9 +278,13 @@ export async function getMainCategories(): Promise<CategoryWithSubcategories[]> 
   }
 }
 
-export async function getCategoryBySlug(slug: string) {
+export async function getCategoryBySlug(slug: string): Promise<CategoryDetail | null> {
+  const cacheKey = `category_${slug}`;
+  const cached = getFromCache<CategoryDetail>(cacheKey);
+  if (cached) return cached;
+
   try {
-    return await prisma.category.findUnique({
+    const result = await prisma.category.findUnique({
       where: { slug },
       include: {
         parentCategory: true,
@@ -243,6 +300,10 @@ export async function getCategoryBySlug(slug: string) {
         },
       },
     });
+    if (result) {
+      setToCache(cacheKey, result);
+    }
+    return result;
   } catch (error) {
     console.error(`Error fetching category ${slug}:`, error);
     return null;
@@ -250,6 +311,9 @@ export async function getCategoryBySlug(slug: string) {
 }
 
 export async function getFeaturedProducts() {
+  const cached = getFromCache<any[]>("featured_products");
+  if (cached) return cached;
+
   try {
     const products = await prisma.product.findMany({
       where: {
@@ -268,10 +332,12 @@ export async function getFeaturedProducts() {
       },
     });
 
-    return products.map((p) => ({
+    const formatted = products.map((p) => ({
       ...p,
       price: p.price ? Number(p.price) : null,
     }));
+    setToCache("featured_products", formatted);
+    return formatted;
   } catch (error) {
     console.error("Error fetching featured products:", error);
     return [];
@@ -279,6 +345,10 @@ export async function getFeaturedProducts() {
 }
 
 export async function getProductBySlug(slug: string) {
+  const cacheKey = `product_${slug}`;
+  const cached = getFromCache<any>(cacheKey);
+  if (cached) return cached;
+
   try {
     const product = await prisma.product.findUnique({
       where: { slug },
@@ -304,7 +374,7 @@ export async function getProductBySlug(slug: string) {
 
     if (!product) return null;
 
-    return {
+    const formatted = {
       ...product,
       price: product.price ? Number(product.price) : null,
       category: product.category
@@ -317,6 +387,8 @@ export async function getProductBySlug(slug: string) {
           }
         : null,
     };
+    setToCache(cacheKey, formatted);
+    return formatted;
   } catch (error) {
     console.error(`Error fetching product ${slug}:`, error);
     return null;
@@ -330,6 +402,10 @@ export async function getProducts(options: {
   sort?: string;
   limit?: number;
 }) {
+  const cacheKey = `products_${options.categorySlug || ""}_${options.search || ""}_${options.availability || ""}_${options.sort || ""}_${options.limit || 50}`;
+  const cached = getFromCache<any[]>(cacheKey);
+  if (cached) return cached;
+
   try {
     const { categorySlug, search, availability, sort, limit = 50 } = options;
 
@@ -385,10 +461,12 @@ export async function getProducts(options: {
       },
     });
 
-    return products.map((p) => ({
+    const formatted = products.map((p) => ({
       ...p,
       price: p.price ? Number(p.price) : null,
     }));
+    setToCache(cacheKey, formatted);
+    return formatted;
   } catch (error) {
     console.error("Error fetching products:", error);
     return [];

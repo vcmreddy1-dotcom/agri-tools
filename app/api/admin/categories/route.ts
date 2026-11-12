@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/db";
+import { clearDataCache } from "@/lib/data";
 
 export async function GET() {
   try {
@@ -61,6 +62,7 @@ export async function POST(req: NextRequest) {
       },
     });
 
+    clearDataCache();
     return NextResponse.json({ success: true, category });
   } catch (err) {
     console.error("Create category error:", err);
@@ -96,6 +98,7 @@ export async function PUT(req: NextRequest) {
       },
     });
 
+    clearDataCache();
     return NextResponse.json({ success: true, category: updated });
   } catch (err) {
     console.error("Update category error:", err);
@@ -147,6 +150,7 @@ export async function DELETE(req: NextRequest) {
 
     await prisma.category.delete({ where: { id } });
 
+    clearDataCache();
     return NextResponse.json({
       success: true,
       message: "Category deleted successfully",

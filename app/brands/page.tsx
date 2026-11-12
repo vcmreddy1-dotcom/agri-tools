@@ -18,7 +18,7 @@ import { BRAND_PARTNERS, SECONDARY_PARTNERS } from "@/lib/brands";
 import { getFeaturedProducts } from "@/lib/data";
 import { BUSINESS_INFO, getGeneralWhatsAppUrl } from "@/lib/whatsapp";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 60;
 
 export const metadata = {
   title: "Authorized Brands & OEM Manufacturers | Prakash Agri Tools",

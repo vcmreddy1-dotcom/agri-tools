@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/db";
+import { clearDataCache } from "@/lib/data";
 
 export async function GET(
   req: NextRequest,
@@ -105,6 +106,7 @@ export async function PUT(
       }
     }
 
+    clearDataCache();
     return NextResponse.json({ success: true, product: updated });
   } catch (err) {
     console.error("Update product error:", err);
@@ -126,6 +128,7 @@ export async function DELETE(
     await prisma.productMedia.deleteMany({ where: { productId: id } });
     await prisma.product.delete({ where: { id } });
 
+    clearDataCache();
     return NextResponse.json({ success: true, message: "Product deleted" });
   } catch (err) {
     console.error("Delete product error:", err);

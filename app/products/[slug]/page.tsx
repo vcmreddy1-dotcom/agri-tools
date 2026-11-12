@@ -9,6 +9,8 @@ import ProductDetailView from "@/components/ProductDetailView";
 import { Layers, MessageSquare, ArrowRight, AlertCircle, Tractor } from "lucide-react";
 import { getGeneralWhatsAppUrl } from "@/lib/whatsapp";
 
+export const revalidate = 60;
+
 interface PageProps {
   params: Promise<{ slug: string }>;
 }
@@ -124,7 +126,7 @@ export default async function ProductOrCategoryPage({ params }: PageProps) {
               >
                 All {category.name}
               </Link>
-              {category.subcategories.map((sub) => (
+              {category.subcategories.map((sub: { id: string; name: string; slug: string }) => (
                 <Link
                   key={sub.id}
                   href={`/products?category=${sub.slug}`}
