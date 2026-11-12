@@ -22,6 +22,7 @@ import {
 import { getMainCategories, getFeaturedProducts } from "@/lib/data";
 import { BUSINESS_INFO, getGeneralWhatsAppUrl } from "@/lib/whatsapp";
 import ProductCard from "@/components/ProductCard";
+import HeroVideo from "@/components/HeroVideo";
 
 export const dynamic = "force-dynamic";
 
@@ -122,19 +123,8 @@ export default async function HomePage() {
             {/* Right Card / Machine Visual Showcase with Video */}
             <div className="lg:col-span-5 relative">
               <div className="relative rounded-3xl overflow-hidden border-2 border-[#F97316]/40 shadow-2xl bg-stone-900 aspect-4/3 lg:aspect-square">
-                {/* Autoplay looping video replacing static photo */}
-                <video
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  preload="auto"
-                  poster={`/uploads/${encodeURIComponent("WhatsApp Image 2026-10-13 at 16.44.01.jpeg")}`}
-                  className="w-full h-full object-cover object-center"
-                >
-                  <source src="/videos/hero-machinery.mp4" type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
+                {/* Autoplay looping video - photo completely removed */}
+                <HeroVideo />
 
                 {/* Brand watermark badge showcasing both logos */}
                 <div className="absolute top-4 right-4 bg-white/95 backdrop-blur-md rounded-2xl p-2 shadow-lg flex items-center gap-2.5 border border-stone-200/60 z-10">
