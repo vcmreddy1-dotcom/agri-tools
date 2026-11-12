@@ -19,6 +19,7 @@ import {
   ArrowRight,
   CheckCircle2,
   Award,
+  ShieldCheck,
   Lock,
   Users,
 } from "lucide-react";
@@ -463,11 +464,11 @@ export default function Navbar() {
                       <span className="text-stone-300">|</span>
 
                       <Link
-                        href="/certifications"
+                        href="/brands"
                         className="inline-flex items-center gap-1.5 hover:text-[#F97316] transition-colors"
                       >
-                        <Award className="w-4 h-4 text-[#F97316]" />
-                        <span>Official Certifications</span>
+                        <ShieldCheck className="w-4 h-4 text-[#F97316]" />
+                        <span>Authorized Brands</span>
                       </Link>
 
                       <span className="text-stone-300">|</span>
@@ -488,15 +489,15 @@ export default function Navbar() {
             </div>
 
             <Link
-              href="/certifications"
+              href="/brands"
               className={`px-3 py-2 text-[13px] font-medium tracking-wide uppercase rounded-lg transition-colors flex items-center gap-1.5 ${
-                pathname === "/certifications"
+                pathname === "/brands"
                   ? "text-[#F97316] font-semibold bg-orange-50/70"
                   : "text-[#1F1F1F] hover:text-[#F97316] hover:bg-stone-50"
               }`}
             >
-              <Award className="w-4 h-4 text-[#F97316]" />
-              <span>CERTIFICATIONS</span>
+              <ShieldCheck className="w-4 h-4 text-[#F97316]" />
+              <span>BRANDS</span>
             </Link>
 
             <Link
@@ -644,12 +645,12 @@ export default function Navbar() {
           </div>
 
           <Link
-            href="/certifications"
+            href="/brands"
             onClick={() => setMobileMenuOpen(false)}
             className="flex items-center gap-2 px-3 py-2.5 rounded-lg text-base font-semibold text-stone-900 hover:bg-stone-50"
           >
-            <Award className="w-4 h-4 text-[#c5a059]" />
-            <span>CERTIFICATIONS</span>
+            <ShieldCheck className="w-4 h-4 text-[#F97316]" />
+            <span>BRANDS</span>
           </Link>
 
           <Link

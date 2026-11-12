@@ -23,6 +23,7 @@ import { getMainCategories, getFeaturedProducts } from "@/lib/data";
 import { BUSINESS_INFO, getGeneralWhatsAppUrl } from "@/lib/whatsapp";
 import ProductCard from "@/components/ProductCard";
 import HeroVideo from "@/components/HeroVideo";
+import { BRAND_PARTNERS, SECONDARY_PARTNERS } from "@/lib/brands";
 
 export const dynamic = "force-dynamic";
 
@@ -403,183 +404,139 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* SECTION: VERIFIED CERTIFICATIONS & DEALERSHIP AUTHORIZATIONS */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* SECTION: AUTHORIZED OEM BRANDS & MANUFACTURERS */}
+      <section id="brands" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-24">
         <div className="bg-stone-900 text-white rounded-3xl p-8 sm:p-12 lg:p-16 border border-stone-800 shadow-2xl relative overflow-hidden">
-          <div className="absolute top-0 right-0 -translate-y-1/3 translate-x-1/3 w-80 h-80 bg-emerald-600/10 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute top-0 right-0 -translate-y-1/3 translate-x-1/3 w-80 h-80 bg-orange-500/10 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute bottom-0 left-0 translate-y-1/3 -translate-x-1/3 w-80 h-80 bg-emerald-600/10 rounded-full blur-3xl pointer-events-none" />
 
+          {/* Header */}
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10 relative z-10">
             <div className="space-y-2 max-w-2xl">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/15 text-[#F97316] text-xs font-bold uppercase tracking-wider">
                 <ShieldCheck className="w-4 h-4 text-[#F97316]" />
-                <span>Verified Industry Accreditations</span>
+                <span>Authorized Dealerships & OEM Partners</span>
               </div>
               <h2 className="text-2xl sm:text-4xl font-bold uppercase tracking-tight text-white leading-[1.15]">
-                GOVERNMENT APPROVED <span className="text-[#F97316]">CERTIFICATIONS & SUBSIDIES</span>
+                WORLD-CLASS BRANDS <span className="text-[#F97316]">&amp; MANUFACTURERS</span>
               </h2>
               <p className="text-sm text-stone-300 leading-[1.6] font-normal">
-                Backed by Government MSME registration, AMMA India life membership, and direct OEM dealership appointments. We guarantee 100% genuine machinery with factory warranty support.
+                Direct authorized sales, genuine warranty, and factory spare parts for industry-leading agricultural machinery brands trusted across India and worldwide.
               </p>
             </div>
 
-            <Link
-              href="/certifications"
-              className="inline-flex items-center gap-2 bg-[#F97316] hover:bg-[#EA580C] text-white px-5 py-3 rounded-xl text-xs sm:text-sm font-semibold shadow-lg transition-all shrink-0 uppercase tracking-wider"
-            >
-              <Award className="w-4 h-4" />
-              <span>View All 13 Official Certificates</span>
-              <ArrowRight className="w-4 h-4" />
-            </Link>
+            <div className="flex flex-wrap items-center gap-3">
+              <Link
+                href="/brands"
+                className="inline-flex items-center gap-2 bg-[#F97316] hover:bg-[#EA580C] text-white px-5 py-3 rounded-xl text-xs sm:text-sm font-semibold shadow-lg transition-all shrink-0 uppercase tracking-wider"
+              >
+                <span>View Brand Directory</span>
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+              <Link
+                href="/certifications"
+                className="inline-flex items-center gap-2 bg-stone-800 hover:bg-stone-700 text-stone-200 border border-stone-700 px-4 py-3 rounded-xl text-xs sm:text-sm font-semibold transition-all shrink-0 uppercase tracking-wider"
+              >
+                <Award className="w-4 h-4 text-[#F97316]" />
+                <span>Certifications</span>
+              </Link>
+            </div>
           </div>
 
-          {/* 4 Spotlight Certificate Cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 relative z-10">
-            {/* Card 1: MSME Udyam */}
-            <Link
-              href="/certifications"
-              className="group bg-stone-800/90 hover:bg-stone-800 rounded-2xl p-5 border border-stone-700/80 hover:border-[#F97316]/50 transition-all duration-300 flex flex-col justify-between"
-            >
-              <div className="space-y-3">
-                <div className="relative aspect-4/3 rounded-xl overflow-hidden bg-white/5 border border-stone-700">
-                  <Image
-                    src="/certificates/udyam-msme-registration-certificate.webp"
-                    alt="Udyam MSME Registration"
-                    fill
-                    sizes="(max-width: 768px) 100vw, 25vw"
-                    className="object-contain p-2 group-hover:scale-105 transition-transform"
-                  />
-                </div>
+          {/* 6 Clean White Brand Cards Matching Reference Card */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 relative z-10">
+            {BRAND_PARTNERS.map((brand) => (
+              <div
+                key={brand.id}
+                className="group bg-white rounded-2xl p-6 border border-stone-200 hover:border-[#F97316] transition-all duration-300 shadow-lg hover:shadow-2xl flex flex-col justify-between text-stone-900"
+              >
                 <div>
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-[#F97316] block">
-                    Government of India
-                  </span>
-                  <h3 className="font-bold text-white text-sm mt-1 uppercase group-hover:text-[#F97316] transition-colors">
-                    Udyam MSME Registration
-                  </h3>
-                  <p className="text-xs text-stone-400 mt-1 font-mono">
-                    UDYAM-TS-09-0011074
-                  </p>
-                </div>
-              </div>
-              <span className="text-xs text-[#F97316] font-semibold mt-3 flex items-center gap-1">
-                <span>View Full Document</span>
-                <span>→</span>
-              </span>
-            </Link>
+                  {/* Brand Logo Container (clean white card look) */}
+                  <div className="relative h-28 w-full rounded-xl bg-white border border-stone-100 flex items-center justify-center p-3 mb-4 group-hover:scale-[1.02] transition-transform duration-300">
+                    <Image
+                      src={brand.logo}
+                      alt={brand.name}
+                      width={240}
+                      height={120}
+                      className="max-h-20 w-auto object-contain mx-auto"
+                    />
+                  </div>
 
-            {/* Card 2: AMMA India */}
-            <Link
-              href="/certifications"
-              className="group bg-stone-800/90 hover:bg-stone-800 rounded-2xl p-5 border border-stone-700/80 hover:border-[#F97316]/50 transition-all duration-300 flex flex-col justify-between"
-            >
-              <div className="space-y-3">
-                <div className="relative aspect-4/3 rounded-xl overflow-hidden bg-white/5 border border-stone-700">
-                  <Image
-                    src="/certificates/amma-india-life-member-certificate.webp"
-                    alt="AMMA India Life Member"
-                    fill
-                    sizes="(max-width: 768px) 100vw, 25vw"
-                    className="object-contain p-2 group-hover:scale-105 transition-transform"
-                  />
-                </div>
-                <div>
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-[#F97316] block">
-                    Apex Manufacturers Body
-                  </span>
-                  <h3 className="font-bold text-white text-sm mt-1 uppercase group-hover:text-[#F97316] transition-colors">
-                    AMMA India Life Member
-                  </h3>
-                  <p className="text-xs text-stone-400 mt-1 font-mono">
-                    Member No: LM-785
-                  </p>
-                </div>
-              </div>
-              <span className="text-xs text-[#F97316] font-semibold mt-3 flex items-center gap-1">
-                <span>View Full Document</span>
-                <span>→</span>
-              </span>
-            </Link>
+                  {/* Badge & Title */}
+                  <div className="space-y-1.5">
+                    <div className="flex items-center justify-between gap-2">
+                      <h3 className="font-bold text-lg text-stone-900 tracking-tight">
+                        {brand.name}
+                      </h3>
+                      <span className={`text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full border ${brand.badgeColor}`}>
+                        {brand.badge}
+                      </span>
+                    </div>
+                    <p className="text-xs font-semibold text-[#F97316] uppercase tracking-wide">
+                      {brand.tagline}
+                    </p>
+                    <p className="text-xs text-stone-600 line-clamp-2 leading-relaxed pt-1">
+                      {brand.description}
+                    </p>
+                  </div>
 
-            {/* Card 3: Honda Power Products */}
-            <Link
-              href="/certifications"
-              className="group bg-stone-800/90 hover:bg-stone-800 rounded-2xl p-5 border border-stone-700/80 hover:border-[#F97316]/50 transition-all duration-300 flex flex-col justify-between"
-            >
-              <div className="space-y-3">
-                <div className="relative aspect-4/3 rounded-xl overflow-hidden bg-white/5 border border-stone-700">
-                  <Image
-                    src="/certificates/honda-power-products-dealership-certificate.webp"
-                    alt="Honda Power Products Authorization"
-                    fill
-                    sizes="(max-width: 768px) 100vw, 25vw"
-                    className="object-contain p-2 group-hover:scale-105 transition-transform"
-                  />
+                  {/* Machinery Highlights */}
+                  <div className="mt-4 pt-3 border-t border-stone-100">
+                    <span className="text-[10px] font-bold text-stone-400 uppercase tracking-wider block mb-2">
+                      Key Equipment Range:
+                    </span>
+                    <div className="flex flex-wrap gap-1.5">
+                      {brand.equipment.slice(0, 3).map((item, idx) => (
+                        <span
+                          key={idx}
+                          className="text-[11px] font-medium bg-stone-100 text-stone-700 px-2 py-0.5 rounded-md"
+                        >
+                          {item}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
                 </div>
-                <div>
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-[#F97316] block">
-                    Authorized OEM Dealership
-                  </span>
-                  <h3 className="font-bold text-white text-sm mt-1 uppercase group-hover:text-[#F97316] transition-colors">
-                    Honda India Power Products
-                  </h3>
-                  <p className="text-xs text-stone-400 mt-1">
-                    Engines, Tillers & Sprayers
-                  </p>
-                </div>
-              </div>
-              <span className="text-xs text-[#F97316] font-semibold mt-3 flex items-center gap-1">
-                <span>View Full Document</span>
-                <span>→</span>
-              </span>
-            </Link>
 
-            {/* Card 4: Shrachi / BTL EPC */}
-            <Link
-              href="/certifications"
-              className="group bg-stone-800/90 hover:bg-stone-800 rounded-2xl p-5 border border-stone-700/80 hover:border-[#F97316]/50 transition-all duration-300 flex flex-col justify-between"
-            >
-              <div className="space-y-3">
-                <div className="relative aspect-4/3 rounded-xl overflow-hidden bg-white/5 border border-stone-700">
-                  <Image
-                    src="/certificates/shrachi-btl-epc-dealership-certificate.webp"
-                    alt="Shrachi Agrimech Dealership"
-                    fill
-                    sizes="(max-width: 768px) 100vw, 25vw"
-                    className="object-contain p-2 group-hover:scale-105 transition-transform"
-                  />
-                </div>
-                <div>
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-[#F97316] block">
-                    ISO 9001:2015 Certified
-                  </span>
-                  <h3 className="font-bold text-white text-sm mt-1 uppercase group-hover:text-[#F97316] transition-colors">
-                    Shrachi Agrimech & BTL EPC
-                  </h3>
-                  <p className="text-xs text-stone-400 mt-1">
-                    Power Tillers & Harvesters
-                  </p>
+                {/* Footer Action */}
+                <div className="mt-5 pt-3 border-t border-stone-100 flex items-center justify-between">
+                  <Link
+                    href={`/products?search=${encodeURIComponent(brand.name)}`}
+                    className="text-xs font-bold text-[#F97316] hover:text-[#EA580C] inline-flex items-center gap-1 group-hover:translate-x-0.5 transition-transform uppercase tracking-wider"
+                  >
+                    <span>Explore Products</span>
+                    <span>→</span>
+                  </Link>
+                  <a
+                    href={getGeneralWhatsAppUrl(`Hello Prakash Agri Tools, I am enquiring about ${brand.name} machinery and spare parts pricing.`)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[11px] font-semibold text-emerald-700 hover:text-emerald-800 bg-emerald-50 hover:bg-emerald-100 px-2.5 py-1 rounded-lg border border-emerald-200 transition-colors inline-flex items-center gap-1"
+                  >
+                    <MessageSquare className="w-3 h-3" />
+                    <span>WhatsApp</span>
+                  </a>
                 </div>
               </div>
-              <span className="text-xs text-[#F97316] font-semibold mt-3 flex items-center gap-1">
-                <span>View Full Document</span>
-                <span>→</span>
-              </span>
-            </Link>
+            ))}
           </div>
 
-          {/* Brand Partner Ticker / Pill Strip */}
-          <div className="mt-10 pt-6 border-t border-stone-800 flex flex-wrap items-center justify-between gap-4 text-xs text-stone-400 relative z-10">
-            <span className="font-bold uppercase tracking-wider text-stone-300">
-              Authorized Partner Brands:
-            </span>
-            <div className="flex flex-wrap items-center gap-3 font-semibold text-stone-300">
-              <span className="px-3 py-1 rounded-lg bg-stone-800 border border-stone-700">HONDA</span>
-              <span className="px-3 py-1 rounded-lg bg-stone-800 border border-stone-700">SHRACHI</span>
-              <span className="px-3 py-1 rounded-lg bg-stone-800 border border-stone-700">JAYSAN</span>
-              <span className="px-3 py-1 rounded-lg bg-stone-800 border border-stone-700">ROHITKRISHI</span>
-              <span className="px-3 py-1 rounded-lg bg-stone-800 border border-stone-700">NIPHA ONEHORN</span>
-              <span className="px-3 py-1 rounded-lg bg-stone-800 border border-stone-700">ENOCHS</span>
-              <span className="px-3 py-1 rounded-lg bg-stone-800 border border-stone-700">ANNAPURNA</span>
+          {/* Secondary Partners Ticker */}
+          <div className="mt-10 pt-6 border-t border-stone-800 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 text-xs text-stone-400 relative z-10">
+            <div className="flex items-center gap-2">
+              <span className="font-bold uppercase tracking-wider text-stone-300">
+                Additional Associated Brands:
+              </span>
+            </div>
+            <div className="flex flex-wrap items-center gap-2 font-semibold text-stone-300">
+              {SECONDARY_PARTNERS.map((p) => (
+                <span
+                  key={p.name}
+                  className="px-3 py-1 rounded-lg bg-stone-800/90 border border-stone-700 text-stone-200 text-xs"
+                >
+                  {p.name}
+                </span>
+              ))}
             </div>
           </div>
         </div>
