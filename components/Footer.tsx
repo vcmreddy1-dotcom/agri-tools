@@ -6,7 +6,7 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Tractor, Phone, MapPin, MessageSquare, ShieldCheck, Mail, Award, Download } from "lucide-react";
 import { BUSINESS_INFO, getGeneralWhatsAppUrl } from "@/lib/whatsapp";
-import { FacebookIcon, InstagramIcon } from "@/components/icons/SocialIcons";
+import { FacebookIcon, InstagramIcon, YoutubeIcon } from "@/components/icons/SocialIcons";
 
 export default function Footer() {
   const pathname = usePathname();
@@ -186,6 +186,16 @@ export default function Footer() {
                 >
                   <InstagramIcon className="w-4 h-4 text-[#E1306C] group-hover:text-white transition-colors" />
                   <span>Instagram</span>
+                </a>
+                <a
+                  href={BUSINESS_INFO.social.youtube}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-stone-800/90 hover:bg-[#FF0000] text-stone-300 hover:text-white text-xs font-medium border border-stone-700/80 transition-all group"
+                  aria-label="YouTube Channel"
+                >
+                  <YoutubeIcon className="w-4 h-4 text-[#FF0000] group-hover:text-white transition-colors" />
+                  <span>YouTube</span>
                 </a>
               </div>
             </div>

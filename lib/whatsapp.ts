@@ -47,6 +47,8 @@ export const BUSINESS_INFO = {
     facebook: "https://www.facebook.com/share/1CU72i7TVS/?mibextid=wwXIfr",
     instagram: "https://www.instagram.com/eruvaka_agriculture_solutions?obrf=MTR6dmpqYjlxOWQ4YQ%3D%3D&utm_source=qr",
     instagramHandle: "@eruvaka_agriculture_solutions",
+    youtube: "https://youtube.com/@eruvakaagriculturesolutions?si=tXSSztzWnrdWD8m6",
+    youtubeHandle: "@eruvakaagriculturesolutions",
   },
   categories: [
     { name: "Agricultural Implements", slug: "agricultural-implements" },

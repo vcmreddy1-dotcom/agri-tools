@@ -5,7 +5,7 @@ import { Tractor, ShieldCheck, Clock, MapPin, Phone, MessageSquare, ArrowRight, 
 import { BUSINESS_INFO, getGeneralWhatsAppUrl } from "@/lib/whatsapp";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import VisitingCard from "@/components/VisitingCard";
-import { FacebookIcon, InstagramIcon } from "@/components/icons/SocialIcons";
+import { FacebookIcon, InstagramIcon, YoutubeIcon } from "@/components/icons/SocialIcons";
 
 export const metadata = {
   title: "About Us | Prakash Agri Tools Hyderabad",
@@ -128,7 +128,7 @@ export default function AboutPage() {
                   href={BUSINESS_INFO.social.instagram}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex-1 flex items-center justify-center gap-1.5 py-2 px-3 rounded-xl bg-stone-100 hover:bg-[#E1306C]/10 text-stone-700 hover:text-[#E1306C] text-xs font-semibold transition-colors"
+                  className="flex-1 flex items-center justify-center gap-1.5 py-2 px-2 rounded-xl bg-stone-100 hover:bg-[#E1306C]/10 text-stone-700 hover:text-[#E1306C] text-xs font-semibold transition-colors"
                 >
                   <InstagramIcon className="w-4 h-4 text-[#E1306C]" />
                   <span>Instagram</span>
@@ -137,10 +137,19 @@ export default function AboutPage() {
                   href={BUSINESS_INFO.social.facebook}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex-1 flex items-center justify-center gap-1.5 py-2 px-3 rounded-xl bg-stone-100 hover:bg-[#1877F2]/10 text-stone-700 hover:text-[#1877F2] text-xs font-semibold transition-colors"
+                  className="flex-1 flex items-center justify-center gap-1.5 py-2 px-2 rounded-xl bg-stone-100 hover:bg-[#1877F2]/10 text-stone-700 hover:text-[#1877F2] text-xs font-semibold transition-colors"
                 >
                   <FacebookIcon className="w-4 h-4 text-[#1877F2]" />
                   <span>Facebook</span>
+                </a>
+                <a
+                  href={BUSINESS_INFO.social.youtube}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 flex items-center justify-center gap-1.5 py-2 px-2 rounded-xl bg-stone-100 hover:bg-[#FF0000]/10 text-stone-700 hover:text-[#FF0000] text-xs font-semibold transition-colors"
+                >
+                  <YoutubeIcon className="w-4 h-4 text-[#FF0000]" />
+                  <span>YouTube</span>
                 </a>
               </div>
             </div>

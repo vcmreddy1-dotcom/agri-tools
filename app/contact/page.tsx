@@ -15,7 +15,7 @@ import {
 import { BUSINESS_INFO, getGeneralWhatsAppUrl } from "@/lib/whatsapp";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import VisitingCard from "@/components/VisitingCard";
-import { FacebookIcon, InstagramIcon } from "@/components/icons/SocialIcons";
+import { FacebookIcon, InstagramIcon, YoutubeIcon } from "@/components/icons/SocialIcons";
 
 export default function ContactPage() {
   const [customerName, setCustomerName] = useState("");
@@ -343,6 +343,28 @@ export default function ContactPage() {
                 </div>
                 <span className="text-xs font-semibold text-stone-600 group-hover:translate-x-0.5 transition-transform">
                   Visit →
+                </span>
+              </a>
+
+              <a
+                href={BUSINESS_INFO.social.youtube}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3.5 p-3.5 rounded-2xl bg-stone-50 hover:bg-stone-100 border border-stone-200/90 transition-all group"
+              >
+                <div className="w-10 h-10 rounded-xl bg-[#FF0000] flex items-center justify-center text-white shadow-sm shrink-0 group-hover:scale-105 transition-transform">
+                  <YoutubeIcon className="w-5 h-5" />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <span className="block text-sm font-bold text-stone-900 group-hover:text-[#FF0000] transition-colors">
+                    YouTube Channel
+                  </span>
+                  <span className="block text-xs text-stone-500 truncate">
+                    {BUSINESS_INFO.social.youtubeHandle}
+                  </span>
+                </div>
+                <span className="text-xs font-semibold text-stone-600 group-hover:translate-x-0.5 transition-transform">
+                  Watch →
                 </span>
               </a>
             </div>

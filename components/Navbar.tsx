@@ -24,7 +24,7 @@ import {
   Users,
 } from "lucide-react";
 import { BUSINESS_INFO, getGeneralWhatsAppUrl } from "@/lib/whatsapp";
-import { FacebookIcon, InstagramIcon } from "@/components/icons/SocialIcons";
+import { FacebookIcon, InstagramIcon, YoutubeIcon } from "@/components/icons/SocialIcons";
 
 export interface CategoryNavItem {
   name: string;
@@ -221,6 +221,16 @@ export default function Navbar() {
                 aria-label="Instagram"
               >
                 <InstagramIcon className="w-3.5 h-3.5" />
+              </a>
+              <a
+                href={BUSINESS_INFO.social.youtube}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-stone-300 hover:text-[#FF0000] transition-colors p-0.5"
+                title="Watch on YouTube"
+                aria-label="YouTube"
+              >
+                <YoutubeIcon className="w-3.5 h-3.5" />
               </a>
             </div>
 
@@ -694,7 +704,7 @@ export default function Navbar() {
                 href={BUSINESS_INFO.social.facebook}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex-1 flex items-center justify-center gap-1 text-[11px] text-stone-700 hover:text-[#1877F2] py-2 px-2 rounded-lg bg-stone-100 font-medium transition-colors"
+                className="flex-1 flex items-center justify-center gap-1 text-[11px] text-stone-700 hover:text-[#1877F2] py-2 px-1.5 rounded-lg bg-stone-100 font-medium transition-colors"
               >
                 <FacebookIcon className="w-3.5 h-3.5 text-[#1877F2]" />
                 <span>Facebook</span>
@@ -703,10 +713,19 @@ export default function Navbar() {
                 href={BUSINESS_INFO.social.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex-1 flex items-center justify-center gap-1 text-[11px] text-stone-700 hover:text-[#E1306C] py-2 px-2 rounded-lg bg-stone-100 font-medium transition-colors"
+                className="flex-1 flex items-center justify-center gap-1 text-[11px] text-stone-700 hover:text-[#E1306C] py-2 px-1.5 rounded-lg bg-stone-100 font-medium transition-colors"
               >
                 <InstagramIcon className="w-3.5 h-3.5 text-[#E1306C]" />
                 <span>Instagram</span>
+              </a>
+              <a
+                href={BUSINESS_INFO.social.youtube}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex-1 flex items-center justify-center gap-1 text-[11px] text-stone-700 hover:text-[#FF0000] py-2 px-1.5 rounded-lg bg-stone-100 font-medium transition-colors"
+              >
+                <YoutubeIcon className="w-3.5 h-3.5 text-[#FF0000]" />
+                <span>YouTube</span>
               </a>
             </div>
           </div>
