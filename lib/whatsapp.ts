@@ -1,4 +1,4 @@
-const WHATSAPP_NUMBER = "919666039444";
+const WHATSAPP_NUMBER = "918291179999";
 export const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL || "https://prakashagritools.com";
 
@@ -33,8 +33,6 @@ export const BUSINESS_INFO = {
   proprietor: "V. Chandra Mohan Reddy",
   phoneDisplay: "+91 82911 79999",
   phoneRaw: "+918291179999",
-  secondaryPhone: "+91 96660 39444",
-  secondaryPhoneRaw: "+919666039444",
   email: "prakashagritools@gmail.com",
   whatsappNumber: WHATSAPP_NUMBER,
   address: "Plot No. 4-7-3-18/1/4, GF, Inner Ring Road, Bairamalguda, LB Nagar, Hyderabad - 500079",

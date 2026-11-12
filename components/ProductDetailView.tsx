@@ -258,7 +258,7 @@ export default function ProductDetailView({
                 className="flex items-center gap-1.5 hover:text-[#11341c] font-semibold"
               >
                 <Phone className="w-3.5 h-3.5 text-[#c5a059]" />
-                Direct Call: +91 96660 39444
+                Direct Call: {BUSINESS_INFO.phoneDisplay}
               </a>
               <span>•</span>
               <span className="flex items-center gap-1 text-stone-500">

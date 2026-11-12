@@ -224,7 +224,7 @@ export default function EnquiryModal({ isOpen, onClose, product }: EnquiryModalP
                     className="flex items-center gap-1 hover:text-[#11341c]"
                   >
                     <Phone className="w-3.5 h-3.5 text-[#c5a059]" />
-                    Call: +91 96660 39444
+                    Call: {BUSINESS_INFO.phoneDisplay}
                   </a>
                   <span>•</span>
                   <a

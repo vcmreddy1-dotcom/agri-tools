@@ -140,10 +140,6 @@ export default function Footer() {
                 <a href={`tel:${BUSINESS_INFO.phoneRaw}`} className="hover:text-white transition-colors">
                   {BUSINESS_INFO.phoneDisplay}
                 </a>
-                <span className="text-stone-600">/</span>
-                <a href={`tel:${BUSINESS_INFO.secondaryPhoneRaw}`} className="hover:text-white transition-colors">
-                  {BUSINESS_INFO.secondaryPhone}
-                </a>
               </div>
               <div className="flex items-center gap-2">
                 <Mail className="w-4 h-4 text-[#F97316] shrink-0" />

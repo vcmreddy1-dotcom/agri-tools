@@ -116,7 +116,7 @@ export default async function HomePage() {
                 <div className="flex items-center gap-2">
                   <Phone className="w-4 h-4 text-[#F97316] shrink-0" />
                   <a href={`tel:${BUSINESS_INFO.phoneRaw}`} className="hover:underline font-semibold text-white">
-                    +91 96660 39444
+                    {BUSINESS_INFO.phoneDisplay}
                   </a>
                 </div>
               </div>

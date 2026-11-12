@@ -72,7 +72,7 @@ export async function POST(req: NextRequest) {
   } catch (err) {
     console.error("Enquiry submission error:", err);
     return NextResponse.json(
-      { error: "Failed to record enquiry. Please call us directly at +91 96660 39444." },
+      { error: "Failed to record enquiry. Please call us directly at +91 82911 79999." },
       { status: 500 }
     );
   }

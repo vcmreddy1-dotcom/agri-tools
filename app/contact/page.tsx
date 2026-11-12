@@ -161,7 +161,7 @@ export default function ContactPage() {
                     required
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
-                    placeholder="+91 96660 39444"
+                    placeholder="+91 82911 79999"
                     className="w-full px-4 py-2.5 text-sm rounded-xl border border-stone-200 focus:outline-none focus:ring-2 focus:ring-[#11341c] text-stone-900"
                   />
                 </div>
@@ -243,14 +243,9 @@ export default function ContactPage() {
                 <Phone className="w-5 h-5 text-[#c5a059] shrink-0 mt-0.5" />
                 <div>
                   <span className="font-bold block text-stone-900">Telephone / Mobile</span>
-                  <div className="space-y-0.5">
-                    <a href={`tel:${BUSINESS_INFO.phoneRaw}`} className="text-[#11341c] font-bold block hover:underline">
-                      {BUSINESS_INFO.phoneDisplay}
-                    </a>
-                    <a href={`tel:${BUSINESS_INFO.secondaryPhoneRaw}`} className="text-stone-600 font-semibold block text-xs hover:underline">
-                      {BUSINESS_INFO.secondaryPhone}
-                    </a>
-                  </div>
+                  <a href={`tel:${BUSINESS_INFO.phoneRaw}`} className="text-[#11341c] font-bold block hover:underline">
+                    {BUSINESS_INFO.phoneDisplay}
+                  </a>
                 </div>
               </div>
 
@@ -264,7 +259,7 @@ export default function ContactPage() {
                     rel="noopener noreferrer"
                     className="text-emerald-700 font-semibold hover:underline"
                   >
-                    +91 96660 39444 (Click to Chat)
+                    +91 82911 79999 (Click to Chat)
                   </a>
                 </div>
               </div>
